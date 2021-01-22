@@ -1,0 +1,22 @@
+.App {
+ text-decoration: none;
+}
+
+nav ul a, nav .brand-logo {
+  color: white
+}
+
+.sidenav-trigger {
+  color: white;
+}
+
+a:hover 
+{
+   color:#ffffff; 
+   text-decoration:none; 
+   cursor:pointer;  
+}
+
+.btn {
+  margin: 1vw;
+}
