@@ -3,9 +3,15 @@ const app = express();
 const mysql = require('mysql');
 
 const db = mysql.createConnection({
+    host: 'itfag.usn.no',
+    user: '233574',
+    password: 'JWeiMrF0',
+    database: '233574'
 
 });
 
-app.listen(3001, () => {
-    console.log("Server kjører på port 3001");
+
+//'node server.js' i konsoll
+app.listen(3003, () => {
+    console.log("Server kjører på port 3003");
 });
