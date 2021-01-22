@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 
+//db tilkobling
 const db = mysql.createConnection({
     host: 'itfag.usn.no',
     user: '233574',
