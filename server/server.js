@@ -1,6 +1,12 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql');
+const cors = require('cors');
+
+//Server shit man trenger
+app.use(cors());
+//Oversetter json data
+app.use(express.json());
 
 //db tilkobling
 const db = mysql.createConnection({
