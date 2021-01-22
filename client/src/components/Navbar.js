@@ -5,7 +5,7 @@ const Navbar = () => {
     <div className="App">
       <nav className="deep-purple darken-4">  
       <div className="nav-wrapper container">
-      <a id="logo-container" href="#"  className="brand-logo">USN valget</a>
+      <a id="logo-container" href="/"  className="brand-logo">USN valget</a>
           <div className="">
               <ul className="right hide-on-med-and-down">
                   <li><NavLink to="/">Hjem</NavLink></li>
