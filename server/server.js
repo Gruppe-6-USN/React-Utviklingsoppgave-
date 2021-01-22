@@ -18,7 +18,8 @@ const db = mysql.createConnection({
 });
 
 
-//'node server.js' i konsoll
+//'node server.js' i konsoll starter server
+//Husk å cd server
 app.listen(3003, () => {
     console.log("Server kjører på port 3003");
 });
