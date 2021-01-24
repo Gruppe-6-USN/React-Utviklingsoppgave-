@@ -1,18 +1,28 @@
 import { useState } from 'react';
+import axios from 'axios'; 
 
-const Registrering = () => {
-    const [fornavn, setFornavn] = useState("");
-    const [etternavn, setEtternavn] = useState("");
-    const [email, setEmail] = useState("");
-    const [passord, setPassord] = useState("");
+function App() {
+    const [fornavnreg, setFornavn] = useState("");
+    const [etternavnreg, setEtternavn] = useState("");
+    const [emailreg, setEmail] = useState("");
+    const [passordreg, setPassord] = useState("");
 
-    const hvisInfo = () => {
-        console.log(fornavn + " " + etternavn + " " + email + " " + passord);
+   
+    const register = () => {
+        axios.post('https://itfag.usn.no/phpmyadmin/sql.php?db=233574&server=2&token=63f6a1ed9a42f538edd34b923d597f26&goto=db_structure.php&table=bruker&pos=0', 
+        {
+        fornavn: fornavnreg, 
+        etternavn: etternavnreg, 
+        email: emailreg, 
+        passord: passordreg 
+    }).then((Response)=>  {
+        console.log(Response);
+    });
     }
 
     return ( 
     <div className="App">
-      <div class="row">
+      <div className="row">
             <div className="col s12 offset-m4 m4 card-panel">
                 <form action="" className="col s12">
                     <div className="row">
@@ -32,12 +42,13 @@ const Registrering = () => {
                             <input type="password" placeholder="Gjennta Passord" className="validate"/>
                         </div>
                     </div>
-                    <button onClick={hvisInfo} className="btn waves-effect waves-light right">Registrer</button>
+                    <button onClick={register} className="btn waves-effect waves-light right">Registrer</button>
                 </form>
             </div>
         </div>
     </div>
      );
-}
- 
-export default Registrering;
+
+    };
+
+export default App;

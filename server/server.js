@@ -17,6 +17,18 @@ const db = mysql.createConnection({
 
 });
 
+app.post('/register', (req, res) => {
+const fornavn = req.body.fornavn
+const etternavn = req.body.etternavn
+const email = req.body.email
+const passord = req.body.passord
+
+
+ db.query("INSERT INTO bruker (fornavn, etternavn, email, passord, brukerId) VALUES(?, ?, ?, ?, ?)", [email, fornavn, etternavn, passord], (err, result)=> {    
+    console.log(err); 
+ } )
+
+});
 
 //'node server.js' i konsoll starter server
 //Husk å cd server
