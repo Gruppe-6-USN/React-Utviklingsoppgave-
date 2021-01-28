@@ -6,21 +6,25 @@ import Logginn from './components/Logginn';
 import Registrering from './components/Registrering';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
+import { AuthProvider } from './context/authContext'
+import  PrivateRoute  from './components/PrivateRoute'
 
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
     <div className="App">
       <Navbar />
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/Avstemming' component={Avstemming} />
-        <Route path='/Nominering' component={Nominering} />
+        <PrivateRoute exact path='/' component={Home} />
+        <PrivateRoute path='/Avstemming' component={Avstemming} />
+        <PrivateRoute path='/Nominering' component={Nominering} />
         <Route path='/Logginn' component={Logginn} />
         <Route path='/Registrering' component={Registrering} />
       </Switch>    
     </div>
     </BrowserRouter>
+    </AuthProvider>
   );
 }
 
