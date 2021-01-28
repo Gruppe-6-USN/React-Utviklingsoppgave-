@@ -16,10 +16,8 @@ export function AuthProvider({ children }) {
   const [gjeldeneBruker, setGjeldeneBruker] = useState()
   const [loading, setLoading] = useState(true)
 
-
   function registrer(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
-    
   }
 
   function logginn(email, password) {
@@ -37,7 +35,6 @@ export function AuthProvider({ children }) {
       //console.log(user);
       setGjeldeneBruker(user)
       setLoading(false)
-
     })
 
     return unsubscribe
@@ -49,7 +46,6 @@ export function AuthProvider({ children }) {
     registrer,
     logginn,
     loggut
-    
   }
 
   return (

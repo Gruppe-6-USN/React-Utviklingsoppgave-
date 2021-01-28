@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import { AuthProvider } from './context/authContext'
 import  PrivateRoute  from './components/PrivateRoute'
+import BrukerProfil from './components/BrukerProfil'
 
 function App() {
   return (
@@ -19,9 +20,10 @@ function App() {
         <PrivateRoute exact path='/' component={Home} />
         <PrivateRoute path='/Avstemming' component={Avstemming} />
         <PrivateRoute path='/Nominering' component={Nominering} />
+        <PrivateRoute path='/BrukerProfil' component={BrukerProfil} />
         <Route path='/Logginn' component={Logginn} />
         <Route path='/Registrering' component={Registrering} />
-      </Switch>    
+      </Switch>
     </div>
     </BrowserRouter>
     </AuthProvider>
