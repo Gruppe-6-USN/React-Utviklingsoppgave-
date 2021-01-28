@@ -62,7 +62,7 @@ export function Registrering() {
                             <input type="password" placeholder="Passord" ref={passordRef} className="validate"/>
                         </div>
                         <div className="input-field col s12">
-                            <input type="password" placeholder="Gjennta Passord" ref={passordGjRef} className="validate"/>
+                            <input type="password" placeholder="Gjenta Passord" ref={passordGjRef} className="validate"/>
                         </div>
                     </div>
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Registrer</button>
