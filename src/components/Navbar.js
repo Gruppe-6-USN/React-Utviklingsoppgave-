@@ -28,6 +28,7 @@ const Navbar = () => {
                   {gjeldeneBruker && <li><NavLink to="/">Hjem</NavLink></li>}
                   {gjeldeneBruker && <li><NavLink to="/Avstemming">Avstemming</NavLink></li>}
                   {gjeldeneBruker && <li><NavLink to="/Nominering">Nominering</NavLink></li>}
+                  {gjeldeneBruker && <li><NavLink to="/BrukerProfil">Profil</NavLink></li>}
                   {!gjeldeneBruker && <li><NavLink to="/Logginn">Logg inn</NavLink></li>}
                   {!gjeldeneBruker && <li><NavLink to="/Registrering">Registrering</NavLink></li>}
                   {gjeldeneBruker && <button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
@@ -36,6 +37,7 @@ const Navbar = () => {
                   <li><NavLink to="/">Hjem</NavLink></li>
                   <li><NavLink to="/Avstemming">Avstemming</NavLink></li>
                   <li><NavLink  to="/Nominering">Nominering</NavLink></li>
+                  <li><NavLink to="/BrukerProfil">Profil</NavLink></li>
                   <li><NavLink to="/Logginn">Logg inn</NavLink></li>
                   <li><NavLink to="/Registrering">Registrering</NavLink></li>
               </ul>

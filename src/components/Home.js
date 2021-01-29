@@ -3,21 +3,21 @@ import { useAuth } from '../context/authContext'
 import { Link, useHistory } from 'react-router-dom' 
 
 
-function Home(){
+export function Home(){
     const { gjeldeneBruker } = useAuth();
 
 
 
     return ( 
     <div className="App">
-       <div className="row">
-        <div className="col s12 offset-m4 m4 card-panel">
-            <strong>Email: </strong> {gjeldeneBruker.email}
-            <br/>
-            <strong>UID: </strong>{gjeldeneBruker.uid}
-            
+        <div className="row">
+            <div className="col s12 offset-m4 m4 card-panel">
+                <p>Du er logget inn som: </p>
+                <strong>Email: </strong> {gjeldeneBruker.email}
+                <br/>
+                <strong>UID: </strong>{gjeldeneBruker.uid}    
+            </div>
         </div>
-       </div>
     </div>
      );
 }
