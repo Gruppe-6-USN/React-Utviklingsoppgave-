@@ -19,7 +19,6 @@ export function AuthProvider({ children }) {
   const [gjeldeneBruker, setGjeldeneBruker] = useState()
   const [loading, setLoading] = useState(true)
 
-<<<<<<< HEAD
 
   function registrer(email, password, fornavn, etternavn) {
     auth.createUserWithEmailAndPassword(email, password).then( cred => {
@@ -29,10 +28,6 @@ export function AuthProvider({ children }) {
       })
     })
     
-=======
-  function registrer(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password)
->>>>>>> fbb29af4c114b458d9defecfdb4b77d27cb9aea0
   }
 
   function logginn(email, password) {
