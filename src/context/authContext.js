@@ -1,5 +1,8 @@
 import React, { useContext, useState, useEffect } from "react"
-import  { auth } from "../server/firebase"
+import  { auth, db } from "../server/firebase"
+import 'firebase/firestore';
+import Registrering from "../components/Registrering";
+
 
 //Når nye komponenter blir tatt frem lytter de til context objektet laget her
 const AuthContext = React.createContext()
@@ -17,8 +20,13 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
 
-  function registrer(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password)
+  function registrer(email, password, fornavn, etternavn) {
+    auth.createUserWithEmailAndPassword(email, password).then( cred => {
+      return db.collection('BrukerInfo').doc(cred.user.uid).set({
+        Fornavn: fornavn,
+        Etternavn: etternavn
+      })
+    })
     
   }
 
@@ -47,6 +55,7 @@ export function AuthProvider({ children }) {
   const value = {
     gjeldeneBruker,
     registrer,
+    //registrerBrukerinfo,
     logginn,
     loggut
     

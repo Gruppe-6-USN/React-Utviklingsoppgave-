@@ -2,6 +2,9 @@ import React, { useRef, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useAuth } from "../context/authContext"
 
+import 'firebase/auth';
+
+
 
 export function Registrering() {
   //Referanser til verdier
@@ -11,7 +14,7 @@ export function Registrering() {
   const passordRef = useRef()
   const passordGjRef = useRef()
   //Setter i bruk useAuth funksjonen i authContext
-  const { registrer } = useAuth()
+  const { registrer, registrerBrukerinfo } = useAuth()
   //Feilmelding state som kan settes der feilmeldinger trenges
   const [error, setError] = useState("")
   //Får å disable ulike ting mens siden loader
@@ -31,7 +34,10 @@ export function Registrering() {
       //Hvis det ikke er noen feil
       setError("")
       setLoading(true)
-      await registrer(emailRef.current.value, passordRef.current.value)
+      await registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value)
+
+      
+      
       history.push("/Logginn")
     } catch {
       //Alle feil som ikke har blitt laget feilmelding til går her
@@ -62,7 +68,7 @@ export function Registrering() {
                             <input type="password" placeholder="Passord" ref={passordRef} className="validate"/>
                         </div>
                         <div className="input-field col s12">
-                            <input type="password" placeholder="Gjennta Passord" ref={passordGjRef} className="validate"/>
+                            <input type="password" placeholder="Gjenta Passord" ref={passordGjRef} className="validate"/>
                         </div>
                     </div>
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Registrer</button>
