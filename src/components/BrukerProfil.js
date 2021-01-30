@@ -1,44 +1,44 @@
-import React, { Component } from 'react';
-import * as Functions from './Functions'
-import {storage} from '../server/firebase';
+import { storage } from "../server/firebase";
+import React, { useState } from "react";
 
 
 
-export function BrukerProfil() {
-    class ImageUpload extends Component {
-        constructor(props) {
-            super(props);
-            this.state = {
-                image: null,
-                url: null
-            }
-            this.handleChange = this.handleChange.bind(this);
-            this.handleUpload = this.handleUpload.bin(this);
-        }
+export default function App() {
+    const [file, setFile] = useState(null);
+    const [url, setURL] = useState("");
+  
+    function handleChange(e) {
+      setFile(e.target.files[0]);
     }
-    const handleChange = e => {
-        if(e.target.files[0]){
-            const image = e.target.files[0];
-            this.setState(() => ({image}));
-        }
+  
+    function handleUpload(e) {
+      e.preventDefault();
+      const uploadTask = storage.ref(`/images/${file.name}`).put(file);
+      uploadTask.on("state_changed", console.log, console.error, () => {
+        storage
+          .ref("images")
+          .child(file.name)
+          .getDownloadURL()
+          .then((url) => {
+            setFile(null);
+            setURL(url);
+          });
+      });
     }
-   
-
-
+  
     return (
     <div className="App">
         <div className="row">
             <div className="col s12 offset-m4 m4 card-panel">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />
-                <form runat="server">
-                    <p>Last opp/endre profilbilde: </p>
-                <input type='file' id="imgInp" onChange="readURL(this)"/>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />  
+                <form runat="server" onSubmit={handleUpload}>
+                <p>Last opp/endre profilbilde: </p>
+                <input type="file" id="imgInp" onChange={handleChange} />
+                <button className="btn waves-effect waves-light right" disabled={!file}>Last opp bilde</button>
                 </form>
-                <button className="btn waves-effect waves-light right" >Last opp bilde</button>
+                <img src={url} alt="" />
             </div>
         </div>
     </div>
     );
-    
 }
-export default BrukerProfil
