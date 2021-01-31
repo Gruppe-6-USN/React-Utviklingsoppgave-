@@ -54,7 +54,6 @@ export function AuthProvider({ children }) {
   const value = {
     gjeldeneBruker,
     registrer,
-    //registrerBrukerinfo,
     logginn,
     loggut
   }
