@@ -14,7 +14,7 @@ export function Registrering() {
   const passordRef = useRef()
   const passordGjRef = useRef()
   //Setter i bruk useAuth funksjonen i authContext
-  const { registrer, registrerBrukerinfo } = useAuth()
+  const { registrer } = useAuth()
   //Feilmelding state som kan settes der feilmeldinger trenges
   const [error, setError] = useState("")
   //Får å disable ulike ting mens siden loader
