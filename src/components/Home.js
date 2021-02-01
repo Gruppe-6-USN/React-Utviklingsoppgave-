@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useAuth } from '../context/authContext'
-import { Link, useHistory } from 'react-router-dom' 
 
 
 export function Home(){

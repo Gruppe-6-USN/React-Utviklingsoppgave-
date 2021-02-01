@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
-import Registrering from "../components/Registrering";
+
 
 
 //Når nye komponenter blir tatt frem lytter de til context objektet laget her
