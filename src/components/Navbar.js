@@ -32,6 +32,7 @@ const Navbar = () => {
                   {!gjeldeneBruker && <li><NavLink to="/Logginn">Logg inn</NavLink></li>}
                   {!gjeldeneBruker && <li><NavLink to="/Registrering">Registrering</NavLink></li>}
                   {gjeldeneBruker && <button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
+                  {error && <p>{error}</p>}
               </ul>
               <ul id="nav-mobile" className="sidenav">
                   <li><NavLink to="/">Hjem</NavLink></li>

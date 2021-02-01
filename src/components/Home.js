@@ -4,18 +4,8 @@ import  { db } from "../server/firebase"
 
 
 export function Home(){
-    const { gjeldeneBruker } = useAuth();
-    const [fornavn, setFornavn] = useState()
-    const [etternavn, setEtternavn] = useState()
-
-    db.collection("BrukerInfo").doc(gjeldeneBruker.uid).onSnapshot(function (doc){
-       const firstName = doc.data().Fornavn;
-       const lastName = doc.data().Etternavn;
-       setFornavn(firstName);
-       setEtternavn(lastName);
-       console.log(firstName, lastName)
-    })
-
+    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay } = useAuth();
+   
 
 
     return ( 
@@ -23,9 +13,9 @@ export function Home(){
         <div className="row">
             <div className="col s12 offset-m4 m4 card-panel">
                 <p>Du er logget inn som: </p>
-                <strong>Fornavn: </strong> {fornavn}
+                <strong>Fornavn: </strong> {fornavnDisplay}
                 <br/>
-                <strong>Etternavn: </strong> {etternavn}
+                <strong>Etternavn: </strong> {etternavnDisplay}
                 <br/>
                 <strong>Email: </strong> {gjeldeneBruker.email}
                 <br/>
