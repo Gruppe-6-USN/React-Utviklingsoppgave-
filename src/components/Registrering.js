@@ -36,8 +36,6 @@ export function Registrering() {
       setLoading(true)
       await registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value)
 
-      
-      
       history.push("/Logginn")
     } catch {
       //Alle feil som ikke har blitt laget feilmelding til går her
