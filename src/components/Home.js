@@ -24,6 +24,7 @@ export function Home(){
             <div className="col s12 offset-m4 m4 card-panel">
                 <p>Du er logget inn som: </p>
                 <strong>Fornavn: </strong> {fornavn}
+                <br/>
                 <strong>Etternavn: </strong> {etternavn}
                 <br/>
                 <strong>Email: </strong> {gjeldeneBruker.email}
