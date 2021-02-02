@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
-import Registrering from "../components/Registrering";
+
 
 
 //Når nye komponenter blir tatt frem lytter de til context objektet laget her
@@ -17,6 +17,8 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [gjeldeneBruker, setGjeldeneBruker] = useState()
+  const [fornavnDisplay, setFornavnDisplay] = useState()
+  const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
 
 
@@ -44,6 +46,15 @@ export function AuthProvider({ children }) {
     const unsubscribe = auth.onAuthStateChanged(user => {
       //console.log(user);
       setGjeldeneBruker(user)
+      if(user) {
+        db.collection("BrukerInfo").doc(user.uid).onSnapshot(function (doc){
+          const firstName = doc.data().Fornavn;
+          const lastName = doc.data().Etternavn;
+          setFornavnDisplay(firstName);
+          setEtternavnDisplay(lastName);
+          console.log(firstName, lastName)
+       })
+      }
       setLoading(false)
     })
 
@@ -53,6 +64,8 @@ export function AuthProvider({ children }) {
   //Ulike verdier man gir Provider tilgang til å lytte etter
   const value = {
     gjeldeneBruker,
+    fornavnDisplay,
+    etternavnDisplay,
     registrer,
     logginn,
     loggut
