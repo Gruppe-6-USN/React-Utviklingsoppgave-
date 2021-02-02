@@ -61,8 +61,26 @@ export function AuthProvider({ children }) {
     return unsubscribe
   }, [])
 
+  //bilde upload
+  function uploadBilde(file, url) {
+    const uploadTask = storage.ref(`/images/${file.name}`).put(file);
+    uploadTask.on("state_changed", console.log, console.error, () => {
+      storage
+        .ref("images")
+        .child(file.name)
+        .getDownloadURL()
+        .then((url) => {
+          setFile(null);
+          setURL(url);
+        });
+    });
+  }
   //Ulike verdier man gir Provider tilgang til å lytte etter
   const value = {
+    uploadBilde,
+    url,
+    file,
+    storage,
     gjeldeneBruker,
     fornavnDisplay,
     etternavnDisplay,
