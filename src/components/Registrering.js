@@ -14,7 +14,7 @@ export function Registrering() {
   const passordRef = useRef()
   const passordGjRef = useRef()
   //Setter i bruk useAuth funksjonen i authContext
-  const { registrer } = useAuth()
+  const { registrer, logginn } = useAuth()
   //Feilmelding state som kan settes der feilmeldinger trenges
   const [error, setError] = useState("")
   //Får å disable ulike ting mens siden loader
@@ -35,16 +35,16 @@ export function Registrering() {
       setError("")
       setLoading(true)
       await registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value)
+      await logginn(emailRef.current.value, passordRef.current.value)
 
-      
-      
-      history.push("/Logginn")
+      history.push("/")
     } catch {
       //Alle feil som ikke har blitt laget feilmelding til går her
       setError("Registrering mislykkes")
     }
     //Stopper loadinger etter alt har gått gjennom
     setLoading(false)
+    
   }
 
     return ( 
