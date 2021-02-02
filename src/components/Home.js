@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useAuth } from '../context/authContext'
-import { Link, useHistory } from 'react-router-dom' 
+import  { db } from "../server/firebase"
 
 
 export function Home(){
-    const { gjeldeneBruker } = useAuth();
-
+    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay } = useAuth();
+   
 
 
     return ( 
@@ -13,6 +13,10 @@ export function Home(){
         <div className="row">
             <div className="col s12 offset-m4 m4 card-panel">
                 <p>Du er logget inn som: </p>
+                <strong>Fornavn: </strong> {fornavnDisplay}
+                <br/>
+                <strong>Etternavn: </strong> {etternavnDisplay}
+                <br/>
                 <strong>Email: </strong> {gjeldeneBruker.email}
                 <br/>
                 <strong>UID: </strong>{gjeldeneBruker.uid}    
