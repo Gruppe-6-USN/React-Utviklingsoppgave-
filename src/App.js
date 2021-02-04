@@ -16,8 +16,9 @@ function App() {
     <AuthProvider>
     <BrowserRouter>
     <div className="App">
-      <Navbar />
+    <Navbar />
       <Switch>
+      
         <PrivateRoute exact path='/' component={Home} />
         <PrivateRoute path='/Avstemming' component={Avstemming} />
         <PrivateRoute path='/Nominering' component={Nominering} />

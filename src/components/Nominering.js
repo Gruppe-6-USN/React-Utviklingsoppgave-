@@ -34,9 +34,9 @@ class Nominering extends React.Component {
                     this.state.brukere && 
                     this.state.brukere.map( brukere => {
                         return (
-                            <div className="col s12 offset-m4 m4 card-panel">
+                            <div className="col  m6 card-panel ">
                                 <p>{ brukere.Fornavn } { brukere.Etternavn }</p>
-                                <button type="submit" className="btn waves-effect waves-light right">Nominér</button>
+                                <button type="submit" className="btn waves-effect waves-light .center-block">Nominér</button>
                             </div>   
                         )
                     })
