@@ -52,6 +52,7 @@ function Logginn(){
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Logg Inn</button>
                 </form>
                 <p className="">Trenger du bruker? <Link to="/Registrering">Registrer deg</Link></p>
+                <p> <Link to="/GlemtPassord">Glemt Passord?</Link></p>
             </div>
         </div>
     </div>
