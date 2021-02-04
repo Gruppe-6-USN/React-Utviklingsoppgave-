@@ -39,6 +39,10 @@ export function AuthProvider({ children }) {
   function loggut() {
     auth.signOut();
   }
+
+  function glemtPassord(email) {
+    return auth.sendPasswordResetEmail(email);
+ }
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
   //3. Unsubscribe gjør slik at etter eventen har skjedd, stopper serveren å lytte til den
@@ -68,7 +72,8 @@ export function AuthProvider({ children }) {
     etternavnDisplay,
     registrer,
     logginn,
-    loggut
+    loggut,
+    glemtPassord
   }
 
   return (
