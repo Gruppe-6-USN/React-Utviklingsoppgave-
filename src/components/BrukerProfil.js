@@ -1,11 +1,13 @@
 import { storage } from "../server/firebase";
 import React, { useState } from "react";
+import { useAuth } from "../context/authContext"
 
 
 
 export default function App() {
     const [file, setFile] = useState(null);
     const [url, setURL] = useState("");
+    const { gjeldeneBruker } = useAuth()
   
     function handleChange(e) {
       setFile(e.target.files[0]);
@@ -13,13 +15,9 @@ export default function App() {
   
     function handleUpload(e) {
       e.preventDefault();
-      const uploadTask = storage.ref(`/images/${file.name}`).put(file);
+      const uploadTask = storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').put(file);
       uploadTask.on("state_changed", console.log, console.error, () => {
-        storage
-          .ref("images")
-          .child(file.name)
-          .getDownloadURL()
-          .then((url) => {
+        storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').getDownloadURL().then((url) => {
             setFile(null);
             setURL(url);
           });
