@@ -11,7 +11,6 @@ function GlemtPassord() {
    const [message, setMessage] = useState("");
    const [loading, setLoading] = useState(false);
 
-   //handleSubmit is going to take an event we just want to prevent the default to prevent our form from refreshing 
    async function handleSubmit(event) {
       event.preventDefault()
 
