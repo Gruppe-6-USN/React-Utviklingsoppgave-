@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
+import { Alert } from 'react-bootstrap';
 
 
 function GlemtPassord() {
@@ -34,7 +35,7 @@ function GlemtPassord() {
             <div className="col s12 offset-m4 m4 card-panel">
                 <h2>Glemt Passord</h2>
                 {error && <p>{error}</p>}
-                {message && <p>{message}</p>}
+                {message && <Alert variant="success">{message}</Alert>}
                 <form onSubmit={handleSubmit} className="col s12">
                     <div className="row">
                         <div className="input-field col s12">
