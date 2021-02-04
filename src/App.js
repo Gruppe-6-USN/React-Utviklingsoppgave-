@@ -9,6 +9,7 @@ import Home from './components/Home';
 import { AuthProvider } from './context/authContext'
 import  PrivateRoute  from './components/PrivateRoute'
 import BrukerProfil from './components/BrukerProfil'
+import GlemtPassord from './components/GlemtPassord';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <PrivateRoute path='/BrukerProfil' component={BrukerProfil} />
         <Route path='/Logginn' component={Logginn} />
         <Route path='/Registrering' component={Registrering} />
+        <Route path='/GlemtPassord' component={GlemtPassord} />
       </Switch>
     </div>
     </BrowserRouter>
