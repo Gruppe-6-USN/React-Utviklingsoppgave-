@@ -11,7 +11,7 @@ const app = firebase.initializeApp({
       appId: "577336654085:web:ce695160acf23a00ad9f6c"
 });
 
-const storage = firebase.storage()
+const storage = app.storage()
 
 export {storage};
 

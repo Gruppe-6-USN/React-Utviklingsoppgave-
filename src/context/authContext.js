@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
+import { storage } from "../server/firebase";
 
 
 
@@ -20,6 +21,8 @@ export function AuthProvider({ children }) {
   const [fornavnDisplay, setFornavnDisplay] = useState()
   const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
+  const [picUrl, setPicUrl] = useState()
+  
 
 
   function registrer(email, password, fornavn, etternavn) {
@@ -43,12 +46,16 @@ export function AuthProvider({ children }) {
   function glemtPassord(email) {
     return auth.sendPasswordResetEmail(email);
  }
+
+ function uploadBilde(picFile) {
+  return storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').put(picFile);
+ }
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
   //3. Unsubscribe gjør slik at etter eventen har skjedd, stopper serveren å lytte til den
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
-      //console.log(user);
+      console.log(user);
       setGjeldeneBruker(user)
       if(user) {
         db.collection("BrukerInfo").doc(user.uid).onSnapshot(function (doc){
@@ -57,7 +64,14 @@ export function AuthProvider({ children }) {
           setFornavnDisplay(firstName);
           setEtternavnDisplay(lastName);
           console.log(firstName, lastName)
+       });
+       storage.ref('brukere/' + user.uid + '/profile.jpg').getDownloadURL().then((url) => {
+        setPicUrl(url);
+        user.updateProfile({
+          photoURL: picUrl
+        })
        })
+
       }
       setLoading(false)
     })
@@ -73,7 +87,8 @@ export function AuthProvider({ children }) {
     registrer,
     logginn,
     loggut,
-    glemtPassord
+    glemtPassord,
+    uploadBilde
   }
 
   return (
