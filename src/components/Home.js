@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useAuth } from '../context/authContext'
-import  { db } from "../server/firebase"
-import { storage } from "../server/firebase";
+
 
 
 export function Home(){
-    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay } = useAuth();
-    const [url, setURL] = useState(null);
+    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay  } = useAuth();
+    
    
 
     // storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').getDownloadURL().then((url) => {
@@ -26,7 +25,8 @@ export function Home(){
                 <strong>Email: </strong> {gjeldeneBruker.email}
                 <br/>
                 <strong>UID: </strong>{gjeldeneBruker.uid}
-                {/* {url && <img src={url} alt="" />} */}
+                { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL }/> }
+               
                   
             </div>
         </div>

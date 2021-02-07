@@ -1,4 +1,3 @@
-import { storage } from "../server/firebase";
 import React, { useState } from "react";
 import { useAuth } from "../context/authContext"
 
@@ -6,22 +5,32 @@ import { useAuth } from "../context/authContext"
 
 export default function App() {
     const [file, setFile] = useState(null);
-    const [url, setURL] = useState("");
-    const { gjeldeneBruker } = useAuth()
+    const { uploadBilde } = useAuth();
+    const [error, setError] = useState("");
+    //Får å disable ulike ting mens siden loader
+    const [loading, setLoading] = useState(false);
   
     function handleChange(e) {
       setFile(e.target.files[0]);
     }
   
-    function handleUpload(e) {
+    async function handleUpload(e) {
       e.preventDefault();
-      const uploadTask = storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').put(file);
-      uploadTask.on("state_changed", console.log, console.error, () => {
-        storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').getDownloadURL().then((url) => {
-            setFile(null);
-            setURL(url);
-          });
-      });
+      try {
+      setError("")
+      setLoading(true)        
+      await uploadBilde(file);
+      } catch {
+        setError("Opplastning mislykkes")
+      }
+      setLoading(false)
+      // const uploadTask = storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').put(file);
+      // uploadTask.on("state_changed", console.log, console.error, () => {
+      //   storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').getDownloadURL().then((url) => {
+      //       setFile(null);
+      //       setURL(url);
+      //     });
+      // });
     }
   
     return (
@@ -32,9 +41,9 @@ export default function App() {
                 <form runat="server" onSubmit={handleUpload}>
                 <p>Last opp/endre profilbilde: </p>
                 <input type="file" id="imgInp" onChange={handleChange} />
-                <button className="btn waves-effect waves-light right" disabled={!file}>Last opp bilde</button>
+                <button disabled={loading} className="btn waves-effect waves-light right" disabled={!file}>Last opp bilde</button>
+                {error && <p> {error} </p> }
                 </form>
-                <img src={url} alt="" />
             </div>
         </div>
     </div>

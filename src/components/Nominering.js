@@ -1,8 +1,7 @@
 import React from 'react'
-import  { db, auth } from "../server/firebase"
+import  { db} from "../server/firebase"
 
-import { Link, useHistory } from "react-router-dom"
-import { useAuth } from "../context/authContext"
+
 
 class Nominering extends React.Component {
     state = {
