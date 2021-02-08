@@ -38,7 +38,7 @@ const Navbar = () => {
               <ul id="nav-mobile" className="sidenav">
                   <li><NavLink to="/">Hjem</NavLink></li>
                   <li><NavLink to="/Avstemming">Avstemming</NavLink></li>
-                  <li><NavLink  to="/Nominering">Nominering</NavLink></li>
+                  <li><NavLink to="/Nominering">Nominering</NavLink></li>
                   <li><NavLink to="/BrukerProfil">Profil</NavLink></li>
                   <li><NavLink to="/Logginn">Logg inn</NavLink></li>
                   <li><NavLink to="/Registrering">Registrering</NavLink></li>

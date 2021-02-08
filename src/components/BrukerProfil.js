@@ -9,6 +9,8 @@ export default function App() {
     const [error, setError] = useState("");
     //Får å disable ulike ting mens siden loader
     const [loading, setLoading] = useState(false);
+    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay  } = useAuth();
+
   
     function handleChange(e) {
       setFile(e.target.files[0]);
@@ -43,6 +45,8 @@ export default function App() {
                 <input type="file" id="imgInp" onChange={handleChange} />
                 <button disabled={loading} className="btn waves-effect waves-light right" disabled={!file}>Last opp bilde</button>
                 {error && <p> {error} </p> }
+                <br></br>
+                <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar"/>
                 </form>
             </div>
         </div>
