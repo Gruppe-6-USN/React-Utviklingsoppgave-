@@ -25,6 +25,7 @@ export function Home(){
                 <strong>Email: </strong> {gjeldeneBruker.email}
                 <br/>
                 <strong>UID: </strong>{gjeldeneBruker.uid}
+                <br/>
                 { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL }/> }
                
                   
