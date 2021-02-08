@@ -41,12 +41,10 @@ export default function App() {
                 <form runat="server" onSubmit={handleUpload}>
                 <p>Last opp/endre profilbilde: </p>
                 <input type="file" id="imgInp" onChange={handleChange} />
-                <button disabled={loading} className="btn waves-effect waves-light right">Last opp bilde</button>
+                <button disabled={loading} className="btn waves-effect waves-light right" disabled={!file}>Last opp bilde</button>
                 {error && <p> {error} </p> }
-                <input type="checkbox" class="filled-in" checked="checked" />
                 </form>
             </div>
-            
         </div>
     </div>
     );

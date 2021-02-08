@@ -47,8 +47,8 @@ export function AuthProvider({ children }) {
     return auth.sendPasswordResetEmail(email);
  }
 
-  function uploadBilde(picFile) {
-    return storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').put(picFile);
+ function uploadBilde(picFile) {
+  return storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').put(picFile);
  }
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
