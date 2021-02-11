@@ -22,13 +22,17 @@ export function Registrering() {
   const [error, setError] = useState("")
   //Får å disable ulike ting mens siden loader
   const [loading, setLoading] = useState(false)
+  const [checked, setChecked] = useState();
 
   const history = useHistory();
   
   //Sjekker om Eposten har usn.no i seg
   var reg = /^\w+([-+.']\w+)*@(usn.no)/
 
- 
+ function handleChange(e) {
+   setChecked(e.target.checked)
+   console.log(checked)
+ }
    
   //Funksjon som settes for <form> sår kjører når det blir submittet
   async function handleSubmit(e) {
@@ -37,9 +41,6 @@ export function Registrering() {
     if(!reg.test(emailRef.current.value.toLowerCase())){
       return setError("Dette er ikke en usn epost")
     }
-    
-    
-     
     //Hvis passord ikke matcher
     if (passordRef.current.value !== passordGjRef.current.value) {
       return setError("Passord matcher ikke")
@@ -48,7 +49,7 @@ export function Registrering() {
       //Hvis det ikke er noen feil
       setError("")
       setLoading(true)
-      await registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value)
+      await registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value, checked)
       await logginn(emailRef.current.value, passordRef.current.value)
 
       history.push("/")
@@ -85,10 +86,12 @@ export function Registrering() {
                         </div>
                     </div>
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Registrer</button>
-                    <div>
-                      <label><input type="checkbox" class="filled-in" className="validate"/>
-                      <span>Vil du kunne bli nominert?</span>
-                      </label></div>
+                    <p>
+      <label>
+        <input type="checkbox" className="filled-in" onChange={handleChange} />
+        <span>Filled in</span>
+      </label>
+    </p>
                 </form>
                 <p>Allerede registrert? <Link to="/Logginn">Logg inn</Link></p>
             </div>

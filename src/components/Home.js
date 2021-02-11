@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useAuth } from '../context/authContext'
 import { storage } from "../server/firebase";
 
@@ -7,6 +7,7 @@ import { storage } from "../server/firebase";
 export function Home(){
     const { gjeldeneBruker, fornavnDisplay, etternavnDisplay  } = useAuth();
     const [picUrl, setPicUrl] = useState()
+
     
    
 
@@ -16,6 +17,14 @@ export function Home(){
           photoURL: picUrl
         })
        })
+
+       function handleChange(e) {
+        
+    }
+
+
+
+     
   
 
     return ( 
@@ -32,12 +41,13 @@ export function Home(){
                 <strong>UID: </strong>{gjeldeneBruker.uid}
                 <br/>
                 { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } width="100" height="100" alt="avatar"/> }
-               
                   
             </div>
         </div>
     </div>
      );
+
+     
 }
  
 export default Home;

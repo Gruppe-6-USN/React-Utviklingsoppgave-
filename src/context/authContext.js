@@ -21,15 +21,16 @@ export function AuthProvider({ children }) {
   const [fornavnDisplay, setFornavnDisplay] = useState()
   const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
-  const [picUrl, setPicUrl] = useState()
+ 
   
 
 
-  function registrer(email, password, fornavn, etternavn) {
+  function registrer(email, password, fornavn, etternavn, nominerbar) {
     auth.createUserWithEmailAndPassword(email, password).then( cred => {
       return db.collection('BrukerInfo').doc(cred.user.uid).set({
         Fornavn: fornavn,
-        Etternavn: etternavn
+        Etternavn: etternavn,
+        Nominerbar: nominerbar
       })
     })
     
