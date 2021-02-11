@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAuth } from '../context/authContext'
+import { storage } from "../server/firebase";
 
 
 
 export function Home(){
     const { gjeldeneBruker, fornavnDisplay, etternavnDisplay  } = useAuth();
+    const [picUrl, setPicUrl] = useState()
     
    
 
-    // storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').getDownloadURL().then((url) => {
-    //     setURL(url);
-    //   });
+    storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').getDownloadURL().then((url) => {
+        setPicUrl(url);
+        gjeldeneBruker.updateProfile({
+          photoURL: picUrl
+        })
+       })
   
 
     return ( 
@@ -26,7 +31,7 @@ export function Home(){
                 <br/>
                 <strong>UID: </strong>{gjeldeneBruker.uid}
                 <br/>
-                { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL }/> }
+                { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } width="100" height="100" alt="avatar"/> }
                
                   
             </div>

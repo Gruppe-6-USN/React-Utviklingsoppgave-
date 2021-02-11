@@ -65,12 +65,12 @@ export function AuthProvider({ children }) {
           setEtternavnDisplay(lastName);
           console.log(firstName, lastName)
        });
-       storage.ref('brukere/' + user.uid + '/profile.jpg').getDownloadURL().then((url) => {
-        setPicUrl(url);
-        user.updateProfile({
-          photoURL: picUrl
-        })
-       })
+      //  storage.ref('brukere/' + user.uid + '/profile.jpg').getDownloadURL().then((url) => {
+      //   setPicUrl(url);
+      //   user.updateProfile({
+      //     photoURL: picUrl
+      //   })
+      //  })
 
       }
       setLoading(false)

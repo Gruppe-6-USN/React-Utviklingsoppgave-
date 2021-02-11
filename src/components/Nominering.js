@@ -1,50 +1,39 @@
-import React from 'react'
-import  { db} from "../server/firebase"
+import React, { useState } from 'react'
+import  { db } from "../server/firebase"
 
 
 
-class Nominering extends React.Component {
-    state = {
-        brukere: null
-    }
+export default function Nominering(){
+    const [brukere, setBruker] = useState("")
+    
+    
+    db.collection('BrukerInfo')
+    .get()
+    .then(snapshot => {
+      const documents = snapshot.docs.map(doc => doc.data())
+      setBruker(documents);
+    })
+    
+  
 
-    componentDidMount(){
-        console.log('mounted');
-        db.collection('BrukerInfo')
-          .get()
-          .then( snapshot => {
-              const brukere = []
-              snapshot.forEach(doc => {
-                  const data = doc.data()
-                  brukere.push(data)
-                  
-              })
-              this.setState({ brukere: brukere })
-            console.log(snapshot)
-          })
-          .catch( error => console.log(error))
-    }
+    return ( 
+        <div className="App">
+        <div className="row">
 
-    render(){
-        return (
-            <div className="App">
-                <div className="row">
-                {
-                    this.state.brukere && 
-                    this.state.brukere.map( brukere => {
-                        return (
-                            <div className="col  m6 card-panel ">
-                                <p>{ brukere.Fornavn } { brukere.Etternavn }</p>
+
+                        { brukere && brukere.map(bruker => { 
+                            return(
+                                <div className="col  m6 card-panel ">
+                                <p>{ bruker.Fornavn } { bruker.Etternavn }</p>
                                 <button type="submit" className="btn waves-effect waves-light .center-block">Nominér</button>
-                            </div>   
+                                </div> 
+                                )}
                         )
-                    })
-                }
-                </div>
-            </div>
-        )
-    }
+                        } 
 
+        </div>
+    </div>
+     );
 }
+ 
 
-export default Nominering;
