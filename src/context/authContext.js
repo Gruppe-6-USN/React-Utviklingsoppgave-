@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react"
 import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
 import { storage } from "../server/firebase";
+import { error } from "jquery";
 
 
 
@@ -62,9 +63,15 @@ function oppdaterPassord(password) {
 function oppdaterPassord(password) {
   return gjeldeneBruker.updatePassword(password)
 }
+
 function oppdaterFNavn(fornavn) {
-  return gjeldeneBruker.updateName(fornavn)
-}
+  return this.db
+  .collection('BrukerInfo')
+  .doc(this.auth.gjeldeneBruker.uid)
+  .set(fornavn)
+  .catch((error) => console.error("Error: ", error))
+};
+
 function oppdaterENavn(etternavn) {
   return gjeldeneBruker.updateName(etternavn)
 }
