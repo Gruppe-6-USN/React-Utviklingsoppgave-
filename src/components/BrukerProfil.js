@@ -53,19 +53,20 @@ export default function App() {
       if (passordRef.current.value !== passordGjRef.current.value) {
         return setError("Passord matcher ikke")
       }
-  
-      const promises = []
+      
+      //Array med regler
+      const regler = []
       setLoading(true)
       setError("")
-  
+      
       if (emailRef.current.value !== gjeldeneBruker.email) {
-        promises.push(oppdaterMail(emailRef.current.value))
+        regler.push(oppdaterMail(emailRef.current.value))
       }
       if (passordRef.current.value) {
-        promises.push(oppdaterPassord(passordRef.current.value))
+        regler.push(oppdaterPassord(passordRef.current.value))
       }
   
-      Promise.all(promises)
+      Promise.all(regler)
         .then(() => {
           history.push("/")
         })
