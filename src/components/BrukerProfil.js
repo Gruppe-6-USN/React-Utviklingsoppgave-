@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useAuth } from "../context/authContext"
+import React, { useRef, useState } from "react";
+import { useAuth } from "../context/authContext";
+import { Link, useHistory } from "react-router-dom"
 
 
 
@@ -9,7 +10,14 @@ export default function App() {
     const [error, setError] = useState("");
     //Får å disable ulike ting mens siden loader
     const [loading, setLoading] = useState(false);
-    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay  } = useAuth();
+    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay, oppdaterMail, oppdaterPassord  } = useAuth();
+    const emailRef = useRef()
+    const passordRef = useRef()
+    const passordGjRef = useRef()
+    const history = useHistory()
+    
+    //Sjekker om Eposten har usn.no i seg
+    var reg = /^\w+([-+.']\w+)*@(usn.no)/
 
   
     function handleChange(e) {
@@ -34,6 +42,40 @@ export default function App() {
       //     });
       // });
     }
+
+    function handleSubmit(e) {
+      e.preventDefault()
+      //Sjekker hvis Eposten er usn og endrer alt til lowercase
+      if(!reg.test(emailRef.current.value.toLowerCase())){
+        return setError("Dette er ikke en usn epost")
+      }
+
+      if (passordRef.current.value !== passordGjRef.current.value) {
+        return setError("Passord matcher ikke")
+      }
+  
+      const promises = []
+      setLoading(true)
+      setError("")
+  
+      if (emailRef.current.value !== gjeldeneBruker.email) {
+        promises.push(oppdaterMail(emailRef.current.value))
+      }
+      if (passordRef.current.value) {
+        promises.push(oppdaterPassord(passordRef.current.value))
+      }
+  
+      Promise.all(promises)
+        .then(() => {
+          history.push("/")
+        })
+        .catch(() => {
+          setError("Mislykket ved oppdatering av profil! Ppøv på nytt")
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+    }
   
     return (
     <div className="App">
@@ -48,8 +90,40 @@ export default function App() {
                 <br></br>
                 <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar"/>
                 </form>
+                <h2>Oppdater Profil</h2>
+                {error && <p>{error}</p>}
+                <form action="" className="col s12" onSubmit= {handleSubmit} >
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input 
+                              type="email" 
+                              defaultValue={gjeldeneBruker.email}
+                              ref={emailRef} 
+                              className="validate"
+                              required
+                            />
+                        </div>
+                        <div className="input-field col s12">
+                            <input 
+                              type="password" 
+                              placeholder="Passord" 
+                              ref={passordRef} 
+                              className="validate"/>
+                        </div>
+                        <div className="input-field col s12">
+                            <input 
+                              type="password" 
+                              placeholder="Gjenta Passord" 
+                              ref={passordGjRef} 
+                              className="validate"
+                            />
+                        </div>
+                    </div>
+                    <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Oppdater</button>
+                </form>
+               <Link to="/">Avslutt</Link>
+            </div>
             </div>
         </div>
-    </div>
     );
 }
