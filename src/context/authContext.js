@@ -59,6 +59,15 @@ export function AuthProvider({ children }) {
 function oppdaterPassord(password) {
   return gjeldeneBruker.updatePassword(password)
 }
+function oppdaterPassord(password) {
+  return gjeldeneBruker.updatePassword(password)
+}
+function oppdaterFNavn(fornavn) {
+  return gjeldeneBruker.updateName(fornavn)
+}
+function oppdaterENavn(etternavn) {
+  return gjeldeneBruker.updateName(etternavn)
+}
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
   //3. Unsubscribe gjør slik at etter eventen har skjedd, stopper serveren å lytte til den
@@ -99,7 +108,9 @@ function oppdaterPassord(password) {
     glemtPassord,
     uploadBilde,
     oppdaterPassord,
-    oppdaterMail
+    oppdaterMail,
+    oppdaterFNavn,
+    oppdaterENavn
   }
 
   return (
