@@ -51,6 +51,14 @@ export function AuthProvider({ children }) {
  function uploadBilde(picFile) {
   return storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').put(picFile);
  }
+
+ function oppdaterMail(email) {
+  return gjeldeneBruker.updateEmail(email)
+}
+
+function oppdaterPassord(password) {
+  return gjeldeneBruker.updatePassword(password)
+}
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
   //3. Unsubscribe gjør slik at etter eventen har skjedd, stopper serveren å lytte til den
@@ -89,7 +97,9 @@ export function AuthProvider({ children }) {
     logginn,
     loggut,
     glemtPassord,
-    uploadBilde
+    uploadBilde,
+    oppdaterPassord,
+    oppdaterMail
   }
 
   return (
