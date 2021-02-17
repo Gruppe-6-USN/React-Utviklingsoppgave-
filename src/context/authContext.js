@@ -65,7 +65,9 @@ function oppdaterPassord(password) {
 }
 
 function oppdaterFNavn (fornavn)  {
-  
+  return db.collection('BrukerInfo').doc(user.uid).update({
+    Fornavn: fornavn
+  })
 };
 
 function registrer(email, password, fornavn, etternavn, nominerbar) {
