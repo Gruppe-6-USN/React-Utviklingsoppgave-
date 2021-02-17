@@ -64,13 +64,20 @@ function oppdaterPassord(password) {
   return gjeldeneBruker.updatePassword(password)
 }
 
-function oppdaterFNavn(fornavn) {
-  return this.db
-  .collection('BrukerInfo')
-  .doc(this.auth.gjeldeneBruker.uid)
-  .set(fornavn)
-  .catch((error) => console.error("Error: ", error))
+function oppdaterFNavn (fornavn)  {
+  
 };
+
+function registrer(email, password, fornavn, etternavn, nominerbar) {
+  auth.createUserWithEmailAndPassword(email, password).then( cred => {
+    return db.collection('BrukerInfo').doc(cred.user.uid).set({
+      Fornavn: fornavn,
+      Etternavn: etternavn,
+      Nominerbar: nominerbar
+    })
+  })
+  
+}
 
 function oppdaterENavn(etternavn) {
   return gjeldeneBruker.updateName(etternavn)
