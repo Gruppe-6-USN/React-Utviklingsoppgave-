@@ -60,9 +60,6 @@ export function AuthProvider({ children }) {
 function oppdaterPassord(password) {
   return gjeldeneBruker.updatePassword(password)
 }
-function oppdaterPassord(password) {
-  return gjeldeneBruker.updatePassword(password)
-}
 
 function oppdaterFNavn (fornavn)  {
   return db.collection('BrukerInfo').doc(gjeldeneBruker.uid).update({
