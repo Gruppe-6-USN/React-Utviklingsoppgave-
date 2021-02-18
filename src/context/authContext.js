@@ -23,7 +23,20 @@ export function AuthProvider({ children }) {
   const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
  
-  
+function nominerBruker(fornavn, etternavn){
+  return db.collection("NominerteBrukere")
+  .doc(gjeldeneBruker.uid)
+  .set({
+    Fornavn: fornavn,
+    Etternavn: etternavn 
+  })
+  .then(() => {
+    console.log(fornavn + " " + etternavn + " er nominert")
+  })
+  .catch((error) => {
+    console.error("Kunne ikke nominere")
+  })
+}
 
 
   function registrer(email, password, fornavn, etternavn, nominerbar) {
@@ -83,7 +96,7 @@ function oppdaterNom(nominerbar) {
   //3. Unsubscribe gjør slik at etter eventen har skjedd, stopper serveren å lytte til den
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
-      console.log(user);
+      /*console.log(user);*/
       setGjeldeneBruker(user)
       if(user) {
         db.collection("BrukerInfo").doc(user.uid).onSnapshot(function (doc){
@@ -91,7 +104,7 @@ function oppdaterNom(nominerbar) {
           const lastName = doc.data().Etternavn;
           setFornavnDisplay(firstName);
           setEtternavnDisplay(lastName);
-          console.log(firstName, lastName)
+          /*console.log(firstName, lastName)*/
        });
       //  storage.ref('brukere/' + user.uid + '/profile.jpg').getDownloadURL().then((url) => {
       //   setPicUrl(url);
@@ -121,7 +134,8 @@ function oppdaterNom(nominerbar) {
     oppdaterMail,
     oppdaterFNavn,
     oppdaterENavn,
-    oppdaterNom
+    oppdaterNom,
+    nominerBruker
   }
 
   return (
