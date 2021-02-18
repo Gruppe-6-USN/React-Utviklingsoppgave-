@@ -22,7 +22,7 @@ export function Registrering() {
   const [error, setError] = useState("")
   //Får å disable ulike ting mens siden loader
   const [loading, setLoading] = useState(false)
-  const [checked, setChecked] = useState();
+  const [checked, setChecked] = useState(false);
 
   const history = useHistory();
   
