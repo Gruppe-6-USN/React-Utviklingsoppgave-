@@ -89,7 +89,7 @@ export function Registrering() {
                     <p>
       <label>
         <input type="checkbox" className="filled-in" onChange={handleChange} />
-        <span>Filled in</span>
+        <span>Vil du være nominerbar?</span>
       </label>
     </p>
                 </form>
