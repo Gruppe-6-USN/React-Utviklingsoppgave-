@@ -153,7 +153,7 @@ export default function App() {
                         </div>
                     </div>
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Oppdater</button>
-                    <a href="/" className="badge badge-primary">Avslutt</a>
+                    <Link to="/">Avslutt</Link>
                 </form>
             </div>
             </div>
