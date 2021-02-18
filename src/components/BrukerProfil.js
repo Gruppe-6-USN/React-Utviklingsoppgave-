@@ -148,7 +148,6 @@ export default function App() {
                               className="validate"
                             />
                         </div>
-<<<<<<< HEAD
                         <h5>Last opp/endre profilbilde: </h5>
                         <input type="file" id="imgInp" onChange={handleChange}/>
                
@@ -156,23 +155,6 @@ export default function App() {
                         <br></br>
                         <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar" className="circle"/>
                     </div>
-=======
-
-                              <h5>Last opp/endre profilbilde: </h5>
-                              <input type="file" id="imgInp" onChange={handleChange} />
-                              {error && <p> {error} </p> }
-                              <br></br>
-                              <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar" className="circle"/>
-
-                        </div>
-
-                        <p>
-                          <label>
-                            <input type="checkbox" className="filled-in" onChange={handleCheckbox} />
-                            <span>Nominerbar [Av/På]</span>
-                          </label>
-                        </p>
->>>>>>> 1e9f00b32895aec13f8888aa882791debd4ee364
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Oppdater</button>
                     <Link to="/">Avslutt</Link>
                 </form>
