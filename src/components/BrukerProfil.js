@@ -136,12 +136,14 @@ export default function App() {
                               className="validate"
                             />
                         </div>
-                        <p>Last opp/endre profilbilde: </p>
-                <input type="file" id="imgInp" onChange={handleChange} />
+                        <div className="">
+                        <p className="">Last opp/endre profilbilde: </p>
+                        <input type="file" id="imgInp" onChange={handleChange} />
                
-                {error && <p> {error} </p> }
-                <br></br>
-                <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar"/>
+                        {error && <p> {error} </p> }
+                        <br></br>
+                        <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar"/>
+                        </div>
                     </div>
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Oppdater</button>
                     <Link to="/">Avslutt</Link>

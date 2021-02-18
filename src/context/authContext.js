@@ -72,16 +72,6 @@ function oppdaterENavn (etternavn)  {
   })
 };
 
-function registrer(email, password, fornavn, etternavn, nominerbar) {
-  auth.createUserWithEmailAndPassword(email, password).then( cred => {
-    return db.collection('BrukerInfo').doc(cred.user.uid).set({
-      Fornavn: fornavn,
-      Etternavn: etternavn,
-      Nominerbar: nominerbar
-    })
-  })
-  
-}
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
   //3. Unsubscribe gjør slik at etter eventen har skjedd, stopper serveren å lytte til den
