@@ -62,7 +62,7 @@ export function Registrering() {
   }
     
       return ( 
-    <div className="App">
+    <div className="App" >
       <div class="row">
             <div className="col s12 offset-m4 m4 card-panel">
                 <h2>Registrer</h2>
@@ -70,18 +70,23 @@ export function Registrering() {
                 <form action="" className="col s12" onSubmit= {handleSubmit} >
                     <div className="row">
                         <div className="input-field col s12">
+                            <i className="material-icons prefix">person_outline</i>
                             <input type="text" placeholder="Fornavn" ref={fornavnRef} className="validate"/>
                         </div>
                         <div className="input-field col s12">
+                            <i className="material-icons prefix">person_outline</i>
                             <input type="text" placeholder="Etternavn" ref={etternavnRef} className="validate"/>
                         </div>
                         <div className="input-field col s12">
+                            <i className="material-icons prefix">email</i>
                             <input type="email" placeholder="Email" ref={emailRef} className="validate"/>
                         </div>
                         <div className="input-field col s12">
+                            <i className="material-icons prefix">lock_outline</i>
                             <input type="password" placeholder="Passord" ref={passordRef} className="validate"/>
                         </div>
                         <div className="input-field col s12">
+                            <i className="material-icons prefix">lock_outline</i>
                             <input type="password" placeholder="Gjenta Passord" ref={passordGjRef} className="validate"/>
                         </div>
                     </div>
