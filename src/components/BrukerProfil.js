@@ -36,13 +36,6 @@ export default function App() {
         setError("Opplastning mislykkes")
       }
       setLoading(false)
-      // const uploadTask = storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').put(file);
-      // uploadTask.on("state_changed", console.log, console.error, () => {
-      //   storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').getDownloadURL().then((url) => {
-      //       setFile(null);
-      //       setURL(url);
-      //     });
-      // });
     }
 
     function handleSubmit(e) {
