@@ -22,7 +22,7 @@ export function Registrering() {
   const [error, setError] = useState("")
   //Får å disable ulike ting mens siden loader
   const [loading, setLoading] = useState(false)
-  const [checked, setChecked] = useState();
+  const [checked, setChecked] = useState(false);
 
   const history = useHistory();
   
@@ -86,12 +86,12 @@ export function Registrering() {
                         </div>
                     </div>
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Registrer</button>
-                    <p>
-      <label>
-        <input type="checkbox" className="filled-in" onChange={handleChange} />
-        <span>Vil du være nominerbar?</span>
-      </label>
-    </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" className="filled-in" onChange={handleChange} />
+                      <span>Vil du være nominerbar?</span>
+                    </label>
+                  </p>
                 </form>
                 <p>Allerede registrert? <Link to="/Logginn">Logg inn</Link></p>
             </div>
