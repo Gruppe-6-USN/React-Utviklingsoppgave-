@@ -137,7 +137,7 @@ export default function App() {
                             />
                         </div>
                         <h5>Last opp/endre profilbilde: </h5>
-                        <input type="file" id="imgInp" onChange={handleChange} />
+                        <input type="file" id="imgInp" onChange={handleChange}/>
                
                         {error && <p> {error} </p> }
                         <br></br>
