@@ -65,8 +65,13 @@ function oppdaterPassord(password) {
 }
 
 function oppdaterFNavn (fornavn)  {
-  return db.collection('BrukerInfo').doc(fornavn.user.uid).update({
+  return db.collection('BrukerInfo').doc(gjeldeneBruker.uid).update({
     Fornavn: fornavn
+  })
+};
+function oppdaterENavn (etternavn)  {
+  return db.collection('BrukerInfo').doc(gjeldeneBruker.uid).update({
+    Etternavn: etternavn
   })
 };
 
@@ -79,10 +84,6 @@ function registrer(email, password, fornavn, etternavn, nominerbar) {
     })
   })
   
-}
-
-function oppdaterENavn(etternavn) {
-  return gjeldeneBruker.updateName(etternavn)
 }
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
