@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { useAuth } from '../context/authContext'
 import { storage } from "../server/firebase";
 
@@ -18,9 +18,7 @@ export function Home(){
         })
        })
 
-       function handleChange(e) {
-        
-    }
+
 
 
 
