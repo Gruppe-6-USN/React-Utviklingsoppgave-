@@ -65,7 +65,7 @@ function oppdaterPassord(password) {
 }
 
 function oppdaterFNavn (fornavn)  {
-  return db.collection('BrukerInfo').doc(user.uid).update({
+  return db.collection('BrukerInfo').doc(fornavn.user.uid).update({
     Fornavn: fornavn
   })
 };
