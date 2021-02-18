@@ -38,6 +38,7 @@ function GlemtPassord() {
                 <form onSubmit={handleSubmit} className="col s12">
                     <div className="row">
                         <div className="input-field col s12">
+                            <i className="material-icons prefix">mail_outline</i>
                             <input type="email" placeholder="Email" ref={emailRef} className="validate"/>
                         </div>
                     </div>
