@@ -23,7 +23,20 @@ export function AuthProvider({ children }) {
   const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
  
-  
+function nominerBruker(fornavn, etternavn){
+  return db.collection("NominerteBrukere")
+  .doc(gjeldeneBruker.uid)
+  .set({
+    Fornavn: fornavn,
+    Etternavn: etternavn 
+  })
+  .then(() => {
+    console.log(fornavn + " " + etternavn + " er nominert")
+  })
+  .catch((error) => {
+    console.error("Kunne ikke nominere")
+  })
+}
 
 
   function registrer(email, password, fornavn, etternavn, nominerbar) {
@@ -65,29 +78,25 @@ function oppdaterFNavn (fornavn)  {
   return db.collection('BrukerInfo').doc(gjeldeneBruker.uid).update({
     Fornavn: fornavn
   })
-};
+}
 function oppdaterENavn (etternavn)  {
   return db.collection('BrukerInfo').doc(gjeldeneBruker.uid).update({
     Etternavn: etternavn
   })
-};
-
-function registrer(email, password, fornavn, etternavn, nominerbar) {
-  auth.createUserWithEmailAndPassword(email, password).then( cred => {
-    return db.collection('BrukerInfo').doc(cred.user.uid).set({
-      Fornavn: fornavn,
-      Etternavn: etternavn,
-      Nominerbar: nominerbar
-    })
-  })
-  
 }
+
+function oppdaterNom(nominerbar) {
+  return db.collection('BrukerInfo').doc(gjeldeneBruker.uid).update({
+    Nominerbar: nominerbar
+  })
+}
+
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
   //3. Unsubscribe gjør slik at etter eventen har skjedd, stopper serveren å lytte til den
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
-      console.log(user);
+      /*console.log(user);*/
       setGjeldeneBruker(user)
       if(user) {
         db.collection("BrukerInfo").doc(user.uid).onSnapshot(function (doc){
@@ -95,7 +104,7 @@ function registrer(email, password, fornavn, etternavn, nominerbar) {
           const lastName = doc.data().Etternavn;
           setFornavnDisplay(firstName);
           setEtternavnDisplay(lastName);
-          console.log(firstName, lastName)
+          /*console.log(firstName, lastName)*/
        });
       //  storage.ref('brukere/' + user.uid + '/profile.jpg').getDownloadURL().then((url) => {
       //   setPicUrl(url);
@@ -124,7 +133,9 @@ function registrer(email, password, fornavn, etternavn, nominerbar) {
     oppdaterPassord,
     oppdaterMail,
     oppdaterFNavn,
-    oppdaterENavn
+    oppdaterENavn,
+    oppdaterNom,
+    nominerBruker
   }
 
   return (
