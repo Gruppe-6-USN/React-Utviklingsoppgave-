@@ -40,7 +40,7 @@ export function Home(){
                 <br/>
                 <strong>UID: </strong>{gjeldeneBruker.uid}
                 <br/>
-                { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } width="100" height="100" alt="avatar"/> }
+                { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } width="100" height="100" alt="avatar" className="circle"/> }
                   
             </div>
         </div>
