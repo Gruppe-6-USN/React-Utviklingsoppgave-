@@ -10,7 +10,7 @@ export default function App() {
     const [error, setError] = useState("");
     //Får å disable ulike ting mens siden loader
     const [loading, setLoading] = useState(false);
-    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay, oppdaterMail, oppdaterPassord, oppdaterFNavn } = useAuth();
+    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay, oppdaterMail, oppdaterPassord, oppdaterFNavn, oppdaterENavn } = useAuth();
     const fornavnRef = useRef()
     const etternavnRef = useRef()
     const emailRef = useRef()
@@ -74,6 +74,10 @@ export default function App() {
       //Skjekker om Fornavnet blir endret hvis det endtres legges det inn i arrayet
       if (fornavnRef.current.value) {
         regler.push(oppdaterFNavn(fornavnRef.current.value))
+      }
+      //Skjekker om Etternavn blir endret hvis det endtres legges det inn i arrayet
+      if (etternavnRef.current.value) {
+        regler.push(oppdaterENavn(etternavnRef.current.value))
       }
   
       Promise.all(regler)
