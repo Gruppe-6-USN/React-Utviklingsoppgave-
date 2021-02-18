@@ -10,7 +10,9 @@ export default function App() {
     const [error, setError] = useState("");
     //Får å disable ulike ting mens siden loader
     const [loading, setLoading] = useState(false);
-    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay, oppdaterMail, oppdaterPassord  } = useAuth();
+    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay, oppdaterMail, oppdaterPassord, oppdaterFNavn, oppdaterENavn } = useAuth();
+    const fornavnRef = useRef()
+    const etternavnRef = useRef()
     const emailRef = useRef()
     const passordRef = useRef()
     const passordGjRef = useRef()
@@ -50,6 +52,7 @@ export default function App() {
         return setError("Dette er ikke en usn epost")
       }
 
+      //Skjekker om passordene er like
       if (passordRef.current.value !== passordGjRef.current.value) {
         return setError("Passord matcher ikke")
       }
@@ -59,19 +62,32 @@ export default function App() {
       setLoading(true)
       setError("")
       
+      //Skjekker at den nye mailen som blir tastet inn ikke er lik den gjeldene mailen
       if (emailRef.current.value !== gjeldeneBruker.email) {
+        //Hvis spørringen over er true blir den nye mailen lagt inn som ny mail i arrayet
         regler.push(oppdaterMail(emailRef.current.value))
       }
+      //Skjekker om passord blir endret hvis det endtres legges det inn i arrayet
       if (passordRef.current.value) {
         regler.push(oppdaterPassord(passordRef.current.value))
       }
+      //Skjekker om Fornavnet blir endret hvis det endtres legges det inn i arrayet
+      if (fornavnRef.current.value) {
+        regler.push(oppdaterFNavn(fornavnRef.current.value))
+      }
+      //Skjekker om Etternavn blir endret hvis det endtres legges det inn i arrayet
+      if (etternavnRef.current.value) {
+        regler.push(oppdaterENavn(etternavnRef.current.value))
+      }
   
       Promise.all(regler)
+        //Hvis alle reglene er oppfylt blir man sendt til hjem siden
         .then(() => {
           history.push("/")
         })
+        //Hvis reglene ikke oppfylles blir denne errormeldingen sendt
         .catch(() => {
-          setError("Mislykket ved oppdatering av profil! Ppøv på nytt")
+          setError("Mislykket ved oppdatering av profil! Prøv på nytt")
         })
         .finally(() => {
           setLoading(false)
@@ -95,6 +111,22 @@ export default function App() {
                 {error && <p>{error}</p>}
                 <form action="" className="col s12" onSubmit= {handleSubmit} >
                     <div className="row">
+                        <div className="input-field col s12">
+                            <input 
+                              type="text" 
+                              placeholder="Fornavn" 
+                              ref={fornavnRef} 
+                              className="validate"
+                            />
+                        </div>
+                        <div className="input-field col s12">
+                            <input 
+                              type="text" 
+                              placeholder="Etternavn" 
+                              ref={etternavnRef} 
+                              className="validate"
+                            />
+                        </div>
                         <div className="input-field col s12">
                             <input 
                               type="email" 

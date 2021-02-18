@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react"
 import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
 import { storage } from "../server/firebase";
+import { error } from "jquery";
 
 
 
@@ -59,6 +60,31 @@ export function AuthProvider({ children }) {
 function oppdaterPassord(password) {
   return gjeldeneBruker.updatePassword(password)
 }
+function oppdaterPassord(password) {
+  return gjeldeneBruker.updatePassword(password)
+}
+
+function oppdaterFNavn (fornavn)  {
+  return db.collection('BrukerInfo').doc(gjeldeneBruker.uid).update({
+    Fornavn: fornavn
+  })
+};
+function oppdaterENavn (etternavn)  {
+  return db.collection('BrukerInfo').doc(gjeldeneBruker.uid).update({
+    Etternavn: etternavn
+  })
+};
+
+function registrer(email, password, fornavn, etternavn, nominerbar) {
+  auth.createUserWithEmailAndPassword(email, password).then( cred => {
+    return db.collection('BrukerInfo').doc(cred.user.uid).set({
+      Fornavn: fornavn,
+      Etternavn: etternavn,
+      Nominerbar: nominerbar
+    })
+  })
+  
+}
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
   //3. Unsubscribe gjør slik at etter eventen har skjedd, stopper serveren å lytte til den
@@ -99,7 +125,9 @@ function oppdaterPassord(password) {
     glemtPassord,
     uploadBilde,
     oppdaterPassord,
-    oppdaterMail
+    oppdaterMail,
+    oppdaterFNavn,
+    oppdaterENavn
   }
 
   return (
