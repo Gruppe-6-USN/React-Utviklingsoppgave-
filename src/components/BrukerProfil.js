@@ -26,26 +26,9 @@ export default function App() {
       setFile(e.target.files[0]);
     }
   
-    async function handleUpload(e) {
-      e.preventDefault();
-      try {
-      setError("")
-      setLoading(true)        
-      await uploadBilde(file);
-      } catch {
-        setError("Opplastning mislykkes")
-      }
-      setLoading(false)
-      // const uploadTask = storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').put(file);
-      // uploadTask.on("state_changed", console.log, console.error, () => {
-      //   storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').getDownloadURL().then((url) => {
-      //       setFile(null);
-      //       setURL(url);
-      //     });
-      // });
-    }
 
-    function handleSubmit(e) {
+
+    async function handleSubmit(e) {
       e.preventDefault()
       //Sjekker hvis Eposten er usn og endrer alt til lowercase
       if(!reg.test(emailRef.current.value.toLowerCase())){
@@ -79,6 +62,15 @@ export default function App() {
       if (etternavnRef.current.value) {
         regler.push(oppdaterENavn(etternavnRef.current.value))
       }
+
+      try {
+        setError("")
+        setLoading(true)        
+        await uploadBilde(file);
+        } catch {
+          setError("Opplastning mislykkes")
+        }
+        setLoading(false)
   
       Promise.all(regler)
         //Hvis alle reglene er oppfylt blir man sendt til hjem siden
@@ -99,14 +91,7 @@ export default function App() {
         <div className="row">
             <div className="col s12 offset-m4 m4 card-panel">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />  
-                <form runat="server" onSubmit={handleUpload}>
-                <p>Last opp/endre profilbilde: </p>
-                <input type="file" id="imgInp" onChange={handleChange} />
-                <button disabled={loading} className="btn waves-effect waves-light right" disabled={!file}>Last opp bilde</button>
-                {error && <p> {error} </p> }
-                <br></br>
-                <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar"/>
-                </form>
+
                 <h2>Oppdater Profil</h2>
                 {error && <p>{error}</p>}
                 <form action="" className="col s12" onSubmit= {handleSubmit} >
@@ -151,6 +136,12 @@ export default function App() {
                               className="validate"
                             />
                         </div>
+                        <h5>Last opp/endre profilbilde: </h5>
+                        <input type="file" id="imgInp" onChange={handleChange} />
+               
+                        {error && <p> {error} </p> }
+                        <br></br>
+                        <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar" className="circle"/>
                     </div>
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Oppdater</button>
                     <Link to="/">Avslutt</Link>
