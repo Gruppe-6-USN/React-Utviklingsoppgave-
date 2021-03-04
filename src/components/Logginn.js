@@ -41,7 +41,7 @@ function Logginn(){
                 <h2>Logg inn</h2>
                 {error && <p>{error}</p>}
                 <form onSubmit={handleSubmit} className="col s12">
-                    <div className="row">
+                    
                         <div className="input-field col s12">
                             <i className="material-icons prefix">mail_outline</i>
                             <input type="email" placeholder="Email" ref={emailRef} className="validate"/>
@@ -50,7 +50,7 @@ function Logginn(){
                             <i className="material-icons prefix">lock_outline</i>
                             <input type="password" placeholder="Passord" ref={passordRef} className="validate"/>
                         </div>
-                    </div>
+                    
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Logg Inn</button>
                 </form>
                 <p className="">Trenger du bruker? <Link to="/Registrering">Registrer deg</Link></p>
