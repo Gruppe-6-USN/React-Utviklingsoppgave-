@@ -10,11 +10,7 @@ export default function Nominering(){
     const fornavnRef = useRef()
     const etternavnRef = useRef()
 
-    async function handleSubmit(e){
-        e.preventDefault();
-        await nominerBruker(fornavnRef.current.value, etternavnRef.current.value)
-        console.log(fornavnRef, etternavnRef)
-    }
+    
     
     useEffect(() => {
         db.collection('BrukerInfo')
@@ -23,22 +19,28 @@ export default function Nominering(){
         .then(snapshot => {
           const documents = snapshot.docs.map(doc => doc.data())
           setBruker(documents);
-          console.log(documents)
+          //console.log(documents)
         })
     }, [])
+
+
+    async function handleSubmit(id){
+        //e.preventDefault();
+        const brukerFinner = brukere.find(bruker => bruker.id === id)
+        await nominerBruker(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id )
+        console.log(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id)
+    }
 
     return ( 
     <div className="App">
         <div className="row">
         { brukere && brukere.map(bruker => { 
         return(
-            <div className="col  m6 card-panel ">
-                <form onSubmit={ handleSubmit }>
-                    <p ref={ fornavnRef }>{ bruker.Fornavn }</p> 
-                    <p ref={ etternavnRef }>{ bruker.Etternavn }</p>
-                    <button type="submit" className="btn waves-effect waves-light .center-block">Nominér</button>
-                </form>
-            </div> 
+            <div className="col  m6 card-panel" key= {bruker.id} >
+                <p ref={ fornavnRef } > { bruker.Fornavn } </p>
+                <p ref={ etternavnRef } > { bruker.Etternavn } </p>
+                <button onClick= { () => handleSubmit(bruker.id) } >Nominér</button> 
+            </div>
         )}
         )
         } 

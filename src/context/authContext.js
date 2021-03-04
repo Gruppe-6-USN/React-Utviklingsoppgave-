@@ -23,12 +23,14 @@ export function AuthProvider({ children }) {
   const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
  
-function nominerBruker(fornavn, etternavn){
+function nominerBruker(fornavn, etternavn, id){
   return db.collection("NominerteBrukere")
-  .doc(gjeldeneBruker.uid)
+  .doc(id)
   .set({
     Fornavn: fornavn,
-    Etternavn: etternavn 
+    Etternavn: etternavn,
+    id: id ,
+    antallStemmer: 0
   })
   .then(() => {
     console.log(fornavn + " " + etternavn + " er nominert")
@@ -44,7 +46,8 @@ function nominerBruker(fornavn, etternavn){
       return db.collection('BrukerInfo').doc(cred.user.uid).set({
         Fornavn: fornavn,
         Etternavn: etternavn,
-        Nominerbar: nominerbar
+        Nominerbar: nominerbar,
+        id: cred.user.uid
       })
     })
     
