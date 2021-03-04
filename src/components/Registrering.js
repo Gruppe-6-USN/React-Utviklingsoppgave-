@@ -68,7 +68,7 @@ export function Registrering() {
                 <h2>Registrer</h2>
                 {error && <p>{error}</p>}
                 <form action="" className="col s12" onSubmit= {handleSubmit} >
-                    <div className="row">
+                    
                         <div className="input-field col s12">
                             <i className="material-icons prefix">person_outline</i>
                             <input type="text" placeholder="Fornavn" ref={fornavnRef} className="validate"/>
@@ -89,7 +89,7 @@ export function Registrering() {
                             <i className="material-icons prefix">lock_outline</i>
                             <input type="password" placeholder="Gjenta Passord" ref={passordGjRef} className="validate"/>
                         </div>
-                    </div>
+                    
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Registrer</button>
                   <p>
                     <label>

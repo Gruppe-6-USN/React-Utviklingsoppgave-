@@ -42,8 +42,10 @@ const Navbar = () => {
                   <li><NavLink to="/BrukerProfil">Profil</NavLink></li>
                   <li><NavLink to="/Logginn">Logg inn</NavLink></li>
                   <li><NavLink to="/Registrering">Registrering</NavLink></li>
+                  
               </ul>
               <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+              
             </div>
             </div>
             </nav> 
