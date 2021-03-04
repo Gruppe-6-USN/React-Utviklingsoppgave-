@@ -51,6 +51,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .row {
  margin-top: 5vh;
+ width: 1000px !important;
 }
 
 #blah {
@@ -58,4 +59,21 @@ textarea.materialize-textarea:focus:not([readonly]) {
   object-fit: cover;
 }
 
+.nominerKort{
+  width: 300px;
+}
 
+.nominerKort p{
+  float: left;
+  margin-right: 5px;
+  height: auto;
+}
+
+.float-right{
+float: right;
+}
+
+.width-margin{
+  width: 300px !important;
+  margin: 0 10px 10px 0;
+}

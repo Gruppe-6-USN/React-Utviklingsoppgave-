@@ -99,10 +99,10 @@ export default function App() {
             <div className="col s12 offset-m4 m4 card-panel">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />  
 
-                <h2>Oppdater Profil</h2>
+                <h3>Oppdater profil</h3>
                 {error && <p>{error}</p>}
                 <form action="" className="col s12" onSubmit= {handleSubmit} >
-                    <div className="row">
+               
 
                         <div className="input-field col s12">
                             <input 
@@ -154,7 +154,7 @@ export default function App() {
                         {error && <p> {error} </p> }
                         <br></br>
                         <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar" className="circle"/>
-                    </div>
+                    
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Oppdater</button>
                     <Link to="/">Avslutt</Link>
                 </form>
