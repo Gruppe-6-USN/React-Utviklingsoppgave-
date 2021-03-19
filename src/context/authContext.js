@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react"
 import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
 import { storage } from "../server/firebase";
-import { error } from "jquery";
+import firebase from 'firebase/app'
 
 
 
@@ -22,6 +22,22 @@ export function AuthProvider({ children }) {
   const [fornavnDisplay, setFornavnDisplay] = useState()
   const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
+
+function stemBruker(id) {
+  return db.collection("NominerteBrukere")
+  .doc(id)
+  .update({
+    antallStemmer: firebase.firestore.FieldValue.increment(1)
+  })
+}
+
+function brukerHarStemt(id) {
+  return db.collection("BrukerInfo")
+  .doc(id)
+  .update({
+    harStemt: true
+  })
+}
  
 function nominerBruker(fornavn, etternavn, id){
   return db.collection("NominerteBrukere")
@@ -64,7 +80,8 @@ function setNominerbar(fornavn, etternavn, id){
         Fornavn: fornavn,
         Etternavn: etternavn,
         Nominerbar: nominerbar,
-        id: cred.user.uid
+        id: cred.user.uid,
+        harStemt: false
       })
     })
     
@@ -156,7 +173,9 @@ function oppdaterNom(nominerbar) {
     oppdaterENavn,
     oppdaterNom,
     nominerBruker,
-    setNominerbar
+    setNominerbar,
+    stemBruker,
+    brukerHarStemt
   }
 
   return (
