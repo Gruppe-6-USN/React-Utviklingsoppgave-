@@ -40,6 +40,23 @@ function nominerBruker(fornavn, etternavn, id){
   })
 }
 
+function setNominerbar(fornavn, etternavn, id){
+  return db.collection("BrukerInfo")
+  .doc(id)
+  .set({
+    Fornavn: fornavn,
+    Etternavn: etternavn,
+    Nominerbar: false,
+    id: id
+  })
+    .then(()=> {
+      console.log("Nominerbar er satt til false")
+    })
+    .then((error) =>{
+      console.log("Kunne ikke endre nimonerbar")
+    })
+}
+
 
   function registrer(email, password, fornavn, etternavn, nominerbar) {
     auth.createUserWithEmailAndPassword(email, password).then( cred => {
@@ -138,7 +155,8 @@ function oppdaterNom(nominerbar) {
     oppdaterFNavn,
     oppdaterENavn,
     oppdaterNom,
-    nominerBruker
+    nominerBruker,
+    setNominerbar
   }
 
   return (
