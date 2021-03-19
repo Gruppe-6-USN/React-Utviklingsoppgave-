@@ -36,7 +36,7 @@ export default function Nominering(){
 
     return ( 
     <div className="App">
-        <div className="row">
+        <div className="row width-margin">
         <h3>Nominér en kandidat</h3>
         <p> Her vises brukere som kan nomineres videre for avsteming.
             <br/>

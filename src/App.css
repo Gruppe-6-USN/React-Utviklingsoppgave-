@@ -50,8 +50,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .row {
- margin-top: 5vh;
- width: 1000px !important;
+ margin: auto !important;
+
 }
 
 #blah {
@@ -60,7 +60,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .nominerKort{
-  width: 300px;
+  width: 400px;
 }
 
 .nominerKort p{
@@ -75,7 +75,7 @@ margin-top: 18px;
 }
 
 .width-margin{
-  width: 300px !important;
+  width: 400px !important;
   margin: 0 10px 10px 0;
 }
 
@@ -86,3 +86,4 @@ margin-top: 18px;
 .nomList :hover{
   color:#311b92;
 }
+

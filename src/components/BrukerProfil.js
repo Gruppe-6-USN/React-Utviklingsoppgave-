@@ -31,7 +31,11 @@ export default function App() {
       setChecked(e.target.checked)
       console.log(checked)
     }
-  
+    
+    function handleNominer(e){
+      setChecked(e.target.checked)
+   console.log(checked)
+    }
 
 
     async function handleSubmit(e) {
@@ -148,6 +152,14 @@ export default function App() {
                               className="validate"
                             />
                         </div>
+                        
+                        <p>
+                          <label>
+                            <input type="checkbox" className="filled-in" onChange={handleNominer} />
+                            <span>Vil du være nominerbar?</span>
+                          </label>
+                        </p>
+
                         <h5>Last opp/endre profilbilde: </h5>
                         <input type="file" id="imgInp" onChange={handleChange}/>
                
