@@ -71,6 +71,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .float-right{
 float: right;
+margin-top: 18px;
 }
 
 .width-margin{

@@ -40,10 +40,10 @@ export default function Nominering(){
         <p>Trykk på "nominér" for å nominere en kandidat. Kandidaten vil da bli registrert for avstemming.</p>
         { brukere && brukere.map(bruker => {
         return(
-            <div className="col  m6 card-panel" key= {bruker.id} >
+            <div className="col width-margin m6 card-panel nominerKort" key= {bruker.id} >
                 <p ref={ fornavnRef } > { bruker.Fornavn } </p>
                 <p ref={ etternavnRef } > { bruker.Etternavn } </p>
-                <button onClick= { () => handleSubmit(bruker.id) } >Nominér</button> 
+                <button className="float-right" onClick= { () => handleSubmit(bruker.id) } >Nominér</button> 
             </div>
         )}
         )
