@@ -75,19 +75,19 @@ export function Registrering() {
                         </div>
                         <div className="input-field col s12">
                             <i className="material-icons prefix">person_outline</i>
-                            <input type="text" placeholder="Etternavn" ref={etternavnRef} className="validate"/>
+                            <input type="text" placeholder="Etternavn" ref={etternavnRef} className="validate" required/>
                         </div>
                         <div className="input-field col s12">
                             <i className="material-icons prefix">mail_outline</i>
-                            <input type="email" placeholder="Email" ref={emailRef} className="validate"/>
+                            <input type="email" placeholder="Email" ref={emailRef} className="validate" required/>
                         </div>
                         <div className="input-field col s12">
                             <i className="material-icons prefix">lock_outline</i>
-                            <input type="password" placeholder="Passord" ref={passordRef} className="validate"/>
+                            <input type="password" placeholder="Passord" ref={passordRef} className="validate" required/>
                         </div>
                         <div className="input-field col s12">
                             <i className="material-icons prefix">lock_outline</i>
-                            <input type="password" placeholder="Gjenta Passord" ref={passordGjRef} className="validate"/>
+                            <input type="password" placeholder="Gjenta Passord" ref={passordGjRef} className="validate" required/>
                         </div>
                     
                     <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Registrer</button>
