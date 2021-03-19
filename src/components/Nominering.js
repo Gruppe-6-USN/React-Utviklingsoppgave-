@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import  { db } from "../server/firebase"
 import { useAuth } from "../context/authContext";
+import { NavLink, withRouter, useHistory } from 'react-router-dom';
 
 
 
@@ -37,13 +38,19 @@ export default function Nominering(){
     <div className="App">
         <div className="row">
         <h3>Nominér en kandidat</h3>
-        <p>Trykk på "nominér" for å nominere en kandidat. Kandidaten vil da bli registrert for avstemming.</p>
+        <p> Her vises brukere som kan nomineres videre for avsteming.
+            <br/>
+            Trykk på "nominér" for å nominere en kandidat. Kandidaten vil da bli registrert for avstemming.
+            <br/>
+            Hvis du ønsker å avgi stemme på en allerede nominert bruker, kan du gå til: 
+            {gjeldeneBruker && <a className="nomList"><NavLink to="/Avstemming"> Avstemming</NavLink></a>}
+            </p>
         { brukere && brukere.map(bruker => {
         return(
             <div className="col width-margin m6 card-panel nominerKort" key= {bruker.id} >
                 <p ref={ fornavnRef } > { bruker.Fornavn } </p>
                 <p ref={ etternavnRef } > { bruker.Etternavn } </p>
-                <button className="float-right" onClick= { () => handleSubmit(bruker.id) } >Nominér</button> 
+                <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } >Nominér</button> 
             </div>
         )}
         )
