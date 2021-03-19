@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react"
 import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
 import { storage } from "../server/firebase";
-import { error } from "jquery";
+import firebase from 'firebase/app'
 
 
 
@@ -22,6 +22,14 @@ export function AuthProvider({ children }) {
   const [fornavnDisplay, setFornavnDisplay] = useState()
   const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
+
+function stemBruker(id) {
+  return db.collection("NominerteBrukere")
+  .doc(id)
+  .update({
+    antallStemmer: firebase.firestore.FieldValue.increment(1)
+  })
+}
  
 function nominerBruker(fornavn, etternavn, id){
   return db.collection("NominerteBrukere")
@@ -156,7 +164,8 @@ function oppdaterNom(nominerbar) {
     oppdaterENavn,
     oppdaterNom,
     nominerBruker,
-    setNominerbar
+    setNominerbar,
+    stemBruker
   }
 
   return (
