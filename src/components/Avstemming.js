@@ -5,7 +5,7 @@ import { useAuth } from "../context/authContext";
 export default function Avstemming() {
 
     const [brukere, setBruker] = useState("")
-    const { stemBruker } = useAuth()
+    const { stemBruker, brukerHarStemt, gjeldeneBruker } = useAuth()
     const fornavnRef = useRef()
     const etternavnRef = useRef()
 
@@ -22,7 +22,9 @@ export default function Avstemming() {
 
     async function handleSubmit(id) {
         const brukerFinner = brukere.find(bruker => bruker.id === id)
-        stemBruker(brukerFinner.id)
+        await stemBruker(brukerFinner.id);
+        //console.log(gjeldeneBruker)
+        await brukerHarStemt(gjeldeneBruker.uid)
     }
 
     return ( 

@@ -30,6 +30,14 @@ function stemBruker(id) {
     antallStemmer: firebase.firestore.FieldValue.increment(1)
   })
 }
+
+function brukerHarStemt(id) {
+  return db.collection("BrukerInfo")
+  .doc(id)
+  .update({
+    harStemt: true
+  })
+}
  
 function nominerBruker(fornavn, etternavn, id){
   return db.collection("NominerteBrukere")
@@ -72,7 +80,8 @@ function setNominerbar(fornavn, etternavn, id){
         Fornavn: fornavn,
         Etternavn: etternavn,
         Nominerbar: nominerbar,
-        id: cred.user.uid
+        id: cred.user.uid,
+        harStemt: false
       })
     })
     
@@ -165,7 +174,8 @@ function oppdaterNom(nominerbar) {
     oppdaterNom,
     nominerBruker,
     setNominerbar,
-    stemBruker
+    stemBruker,
+    brukerHarStemt
   }
 
   return (
