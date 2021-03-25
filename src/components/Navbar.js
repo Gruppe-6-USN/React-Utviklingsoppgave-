@@ -1,7 +1,12 @@
 import { NavLink, withRouter, useHistory } from 'react-router-dom';
 import React, { useState } from 'react'
 import { useAuth } from '../context/authContext'
+import M from 'materialize-css';
 
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});
+  });
 
 const Navbar = () => {
     const [error, setError] = useState("");
@@ -23,7 +28,8 @@ const Navbar = () => {
       <nav className="deep-purple darken-4">  
       <div className="nav-wrapper container nav">
     
-      <a id="logo-container" href="/"  className="brand-logo">USN-valget</a>
+      <a id="logo-container" href="/" className="brand-logo">USN-valget</a>
+      <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <div className="">
               <ul className="right hide-on-med-and-down">
                   {gjeldeneBruker && <li><NavLink to="/">Hjem</NavLink></li>}
@@ -47,12 +53,13 @@ const Navbar = () => {
                   {error && <p>{error}</p>}
                   
               </ul>
-              <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+              
               
             </div>
             </div>
             </nav> 
-      </div>      
+      </div>    
+      
     
      );
 }
