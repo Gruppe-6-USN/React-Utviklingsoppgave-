@@ -38,6 +38,7 @@ function brukerHarStemt(id) {
     harStemt: true
   })
 }
+
  
 function nominerBruker(fornavn, etternavn, id){
   return db.collection("NominerteBrukere")
@@ -136,6 +137,7 @@ function oppdaterNom(nominerbar) {
       /*console.log(user);*/
       setGjeldeneBruker(user)
       if(user) {
+        setTimeout(() => {
         db.collection("BrukerInfo").doc(user.uid).onSnapshot(function (doc){
           const firstName = doc.data().Fornavn;
           const lastName = doc.data().Etternavn;
@@ -143,13 +145,7 @@ function oppdaterNom(nominerbar) {
           setEtternavnDisplay(lastName);
           /*console.log(firstName, lastName)*/
        });
-      //  storage.ref('brukere/' + user.uid + '/profile.jpg').getDownloadURL().then((url) => {
-      //   setPicUrl(url);
-      //   user.updateProfile({
-      //     photoURL: picUrl
-      //   })
-      //  })
-
+      }, 2000);
       }
       setLoading(false)
     })
