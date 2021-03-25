@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useAuth } from "../context/authContext"
-
+import app from "../server/firebase";
+import firebase from 'firebase/app'
 
 import 'firebase/auth';
 
@@ -49,10 +50,21 @@ export function Registrering() {
       //Hvis det ikke er noen feil
       setError("")
       setLoading(true)
-      await registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value, checked)
-      await logginn(emailRef.current.value, passordRef.current.value)
+      registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value, checked)
+      logginn(emailRef.current.value, passordRef.current.value)
 
-      history.push("/")
+      setTimeout(() => {
+      var user = firebase.auth().currentUser;
+      user.sendEmailVerification().then(function() {
+        return setError("Aktiverings epost er sendt til din epost")// Email sent.
+      }).catch(function(error) {
+        // An error happened.
+        return setError("Dette er ikke en aktiv usn epost")
+      });      
+      
+      
+    }, 1000);
+      
     } catch {
       //Alle feil som ikke har blitt laget feilmelding til går her
       setError("Registrering mislykkes")
