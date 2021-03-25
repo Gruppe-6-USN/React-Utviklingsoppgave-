@@ -1,10 +1,9 @@
 import React, { useRef, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useAuth } from "../context/authContext"
-import 'firebase/auth';
-import app from "../server/firebase";
-import firebase from 'firebase/app'
 
+
+import 'firebase/auth';
 
 
 
@@ -26,7 +25,6 @@ export function Registrering() {
   const [checked, setChecked] = useState(false);
 
   const history = useHistory();
-
   
   //Sjekker om Eposten har usn.no i seg
   var reg = /^\w+([-+.']\w+)*@(usn.no)/
@@ -39,10 +37,6 @@ export function Registrering() {
   //Funksjon som settes for <form> sår kjører når det blir submittet
   async function handleSubmit(e) {
     e.preventDefault()
-
-   
-
-
   //Sjekker hvis Eposten er usn og endrer alt til lowercase
     if(!reg.test(emailRef.current.value.toLowerCase())){
       return setError("Dette er ikke en usn epost")
@@ -51,42 +45,20 @@ export function Registrering() {
     if (passordRef.current.value !== passordGjRef.current.value) {
       return setError("Passord matcher ikke")
     }
-
-    
-        
-   
     try {
       //Hvis det ikke er noen feil
       setError("")
       setLoading(true)
-      
-      registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value, checked)
-     logginn(emailRef.current.value, passordRef.current.value) 
-      
-      setTimeout(() => {
-      var user = firebase.auth().currentUser;
+      await registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value, checked)
+      await logginn(emailRef.current.value, passordRef.current.value)
 
-      user.sendEmailVerification().then(function() {
-        return setError("Aktiverings epost er sendt til din epost")// Email sent.
-      }).catch(function(error) {
-        // An error happened.
-        return setError("Dette er ikke en aktiv usn epost")
-      });      
-      
-      
-    }, 1000);
-      
-      
+      history.push("/")
     } catch {
       //Alle feil som ikke har blitt laget feilmelding til går her
       setError("Registrering mislykkes")
     }
     //Stopper loadinger etter alt har gått gjennom
     setLoading(false)
-
-    
-  
-
   }
     
       return ( 
@@ -134,5 +106,5 @@ export function Registrering() {
      );
     }
   
-   
+    
 export default Registrering;
