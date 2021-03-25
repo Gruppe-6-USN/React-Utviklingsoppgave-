@@ -38,6 +38,7 @@ function brukerHarStemt(id) {
     harStemt: true
   })
 }
+
  
 function nominerBruker(fornavn, etternavn, id){
   return db.collection("NominerteBrukere")

@@ -5,6 +5,7 @@ import { useAuth } from "../context/authContext";
 export default function Avstemming() {
 
     const [brukere, setBruker] = useState("")
+    const [harStemt, setharStemt] = useState();
     const { stemBruker, brukerHarStemt, gjeldeneBruker } = useAuth()
     const fornavnRef = useRef()
     const etternavnRef = useRef()
@@ -20,11 +21,25 @@ export default function Avstemming() {
         })
     }, [])
 
+    // useEffect(() => {
+    //     db.collection('BrukerInfo')
+    //     .where("harStemt", "==", true)
+    //     .get()
+    //     .then(snapshot => {
+    //         const stemDoc = snapshot.docs.map(doc => doc.data())
+    //         setharStemt(stemDoc)
+    //         console.log(stemDoc)
+    //     })
+    // })
+
+    
+
     async function handleSubmit(id) {
         const brukerFinner = brukere.find(bruker => bruker.id === id)
         await stemBruker(brukerFinner.id);
         //console.log(gjeldeneBruker)
         await brukerHarStemt(gjeldeneBruker.uid)
+        
     }
 
     return ( 
