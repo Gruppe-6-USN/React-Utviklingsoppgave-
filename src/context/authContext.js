@@ -2,7 +2,8 @@ import React, { useContext, useState, useEffect } from "react"
 import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
 import { storage } from "../server/firebase";
-import firebase from 'firebase/app'
+import { error } from "jquery";
+import { waitFor } from "@testing-library/dom";
 
 
 
@@ -22,23 +23,6 @@ export function AuthProvider({ children }) {
   const [fornavnDisplay, setFornavnDisplay] = useState()
   const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
-
-function stemBruker(id) {
-  return db.collection("NominerteBrukere")
-  .doc(id)
-  .update({
-    antallStemmer: firebase.firestore.FieldValue.increment(1)
-  })
-}
-
-function brukerHarStemt(id) {
-  return db.collection("BrukerInfo")
-  .doc(id)
-  .update({
-    harStemt: true
-  })
-}
-
  
 function nominerBruker(fornavn, etternavn, id){
   return db.collection("NominerteBrukere")
@@ -57,23 +41,6 @@ function nominerBruker(fornavn, etternavn, id){
   })
 }
 
-function setNominerbar(fornavn, etternavn, id){
-  return db.collection("BrukerInfo")
-  .doc(id)
-  .set({
-    Fornavn: fornavn,
-    Etternavn: etternavn,
-    Nominerbar: false,
-    id: id
-  })
-    .then(()=> {
-      console.log("Nominerbar er satt til false")
-    })
-    .then((error) =>{
-      console.log("Kunne ikke endre nimonerbar")
-    })
-}
-
 
   function registrer(email, password, fornavn, etternavn, nominerbar) {
     auth.createUserWithEmailAndPassword(email, password).then( cred => {
@@ -81,8 +48,7 @@ function setNominerbar(fornavn, etternavn, id){
         Fornavn: fornavn,
         Etternavn: etternavn,
         Nominerbar: nominerbar,
-        id: cred.user.uid,
-        harStemt: false
+        id: cred.user.uid
       })
     })
     
@@ -132,24 +98,49 @@ function oppdaterNom(nominerbar) {
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
   //3. Unsubscribe gjør slik at etter eventen har skjedd, stopper serveren å lytte til den
-  useEffect(() => {
+  
+    useEffect(() => {
+      
+
     const unsubscribe = auth.onAuthStateChanged(user => {
       /*console.log(user);*/
-      setGjeldeneBruker(user)
+   
+
+   
+    
+       setGjeldeneBruker(user)
       if(user) {
-        db.collection("BrukerInfo").doc(user.uid).onSnapshot(function (doc){
+        setTimeout(() => {
+                db.collection("BrukerInfo").doc(user.uid).onSnapshot(function (doc){
           const firstName = doc.data().Fornavn;
           const lastName = doc.data().Etternavn;
           setFornavnDisplay(firstName);
           setEtternavnDisplay(lastName);
+          
+          
+
           /*console.log(firstName, lastName)*/
        });
+      //  storage.ref('brukere/' + user.uid + '/profile.jpg').getDownloadURL().then((url) => {
+      //   setPicUrl(url);
+      //   user.updateProfile({
+      //     photoURL: picUrl
+      //   })
+      //  })
+      }, 2000);
       }
       setLoading(false)
+   
+    
     })
-
+ 
+    
     return unsubscribe
+  
+    
+ 
   }, [])
+
 
   //Ulike verdier man gir Provider tilgang til å lytte etter
   const value = {
@@ -166,10 +157,7 @@ function oppdaterNom(nominerbar) {
     oppdaterFNavn,
     oppdaterENavn,
     oppdaterNom,
-    nominerBruker,
-    setNominerbar,
-    stemBruker,
-    brukerHarStemt
+    nominerBruker
   }
 
   return (
