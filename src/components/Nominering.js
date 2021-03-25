@@ -29,7 +29,7 @@ export default function Nominering(){
         //e.preventDefault();
         const brukerFinner = brukere.find(bruker => bruker.id === id)
         await nominerBruker(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id )
-        await setNominerbar(brukerFinner.id)
+        await setNominerbar(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id)
         console.log(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id)
         window.location.reload()
     }

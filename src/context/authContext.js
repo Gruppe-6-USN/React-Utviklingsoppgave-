@@ -57,11 +57,14 @@ function nominerBruker(fornavn, etternavn, id){
   })
 }
 
-function setNominerbar(id){
+function setNominerbar(fornavn, etternavn, id){
   return db.collection("BrukerInfo")
   .doc(id)
-  .update({
-    Nominerbar: false
+  .set({
+    Fornavn: fornavn,
+    Etternavn: etternavn,
+    Nominerbar: false,
+    id: id
   })
     .then(()=> {
       console.log("Nominerbar er satt til false")
