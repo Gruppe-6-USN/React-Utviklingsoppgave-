@@ -21,16 +21,19 @@ export default function Avstemming() {
         })
     }, [])
 
-    // useEffect(() => {
-    //     db.collection('BrukerInfo')
-    //     .where("harStemt", "==", true)
-    //     .get()
-    //     .then(snapshot => {
-    //         const stemDoc = snapshot.docs.map(doc => doc.data())
-    //         setharStemt(stemDoc)
-    //         console.log(stemDoc)
-    //     })
-    // })
+    useEffect(() => {
+        const unsub = db.collection('BrukerInfo').doc(gjeldeneBruker.uid)
+        .onSnapshot(function (doc){
+            const stemmeSjekk = doc.data().harStemt;
+            //console.log(stemmeSjekk)
+            if(stemmeSjekk == true){
+                setharStemt(stemmeSjekk)
+            }
+            
+        })
+        
+        return unsub
+    }, [])
 
     
 
@@ -52,7 +55,8 @@ export default function Avstemming() {
             <div className="col width-margin m6 card-panel nominerKort" key= {bruker.id} >
                 <p ref={ fornavnRef } > { bruker.Fornavn } </p>
                 <p ref={ etternavnRef } > { bruker.Etternavn } </p>
-                <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } >Stem</button> 
+                { !harStemt && <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } >Stem</button>}
+                { harStemt && <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } disabled >Stem</button>}
             </div>
         )}
         )
