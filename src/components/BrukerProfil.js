@@ -26,11 +26,6 @@ export default function App() {
     function handleChange(e) {
       setFile(e.target.files[0]);
     }
-
-    function handleCheckbox(e) {
-      setChecked(e.target.checked)
-      console.log(checked)
-    }
     
     function handleNominer(e){
       setChecked(e.target.checked)
