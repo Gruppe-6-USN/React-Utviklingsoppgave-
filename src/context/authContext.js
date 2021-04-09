@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useState, useEffect} from "react"
 import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
 import { storage } from "../server/firebase";
@@ -22,6 +22,7 @@ export function AuthProvider({ children }) {
   const [fornavnDisplay, setFornavnDisplay] = useState()
   const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
+  const [errors, setError] = useState("")
 
 function stemBruker(id) {
   return db.collection("NominerteBrukere")
@@ -71,7 +72,7 @@ function setNominerbar(id){
     })
 }
 
-
+//Henter inn informasjon fra registering og legger det inn i firebase
   function registrer(email, password, fornavn, etternavn, nominerbar) {
     auth.createUserWithEmailAndPassword(email, password).then( cred => {
       return db.collection('BrukerInfo').doc(cred.user.uid).set({
@@ -87,6 +88,7 @@ function setNominerbar(id){
 
   function logginn(email, password) {
     return auth.signInWithEmailAndPassword(email, password)
+    
   }
 
   function loggut() {
@@ -126,8 +128,22 @@ function oppdaterNom(nominerbar) {
   })
 }
 
+function sjekkEpost() {
+  setTimeout(() => {
+    var user = firebase.auth().currentUser;
+    user.sendEmailVerification().then(function() {
+      return setError("Aktiverings epost er sendt til din epost")// Email sent.
+    }).catch(function(error) {
+      // An error happened.
+      return setError("Dette er ikke en aktiv usn epost")
+    });      
+    
+    
+  }, 2000);
+}
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
+  //setTimeout setter en delay før den skal displaye fornavn og etternavn
   //3. Unsubscribe gjør slik at etter eventen har skjedd, stopper serveren å lytte til den
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -142,7 +158,7 @@ function oppdaterNom(nominerbar) {
           setEtternavnDisplay(lastName);
           /*console.log(firstName, lastName)*/
        });
-      }, 2000);
+      }, 500);
       }
       setLoading(false)
     })
@@ -155,6 +171,7 @@ function oppdaterNom(nominerbar) {
     gjeldeneBruker,
     fornavnDisplay,
     etternavnDisplay,
+    errors,
     registrer,
     logginn,
     loggut,
@@ -168,7 +185,9 @@ function oppdaterNom(nominerbar) {
     nominerBruker,
     setNominerbar,
     stemBruker,
-    brukerHarStemt
+    brukerHarStemt,
+    sjekkEpost
+    
   }
 
   return (

@@ -51,14 +51,18 @@ export function Registrering() {
       setError("")
       setLoading(true)
       registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value, checked)
-      logginn(emailRef.current.value, passordRef.current.value)
       
-      sjekkEpost()
-      if(sjekkEpost){
-        return setError("Verifiserings email har blitt sendt til din Epost")
-      }else{
-        setError("Verifisering epost har ikke blitt sendt")
+
+      // Setter en timeout slik at eposten blir lagt i databasen før den forsøker å sende epost
+      //Sjekker om eposten finnes og sender en aktiverings epost.
+    sjekkEpost()
+    if(sjekkEpost){
+      return setError("Verifiserings mail er sendt til din email");
+    }else{ 
+        setError("Din email er ikke en gyldig USN email.");
+
       }
+      
       
     } catch {
       //Alle feil som ikke har blitt laget feilmelding til går her

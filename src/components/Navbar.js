@@ -57,24 +57,24 @@ const Navbar = () => {
       <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <div className="">
               <ul className="right hide-on-med-and-down">
+                {gjeldeneBruker.emailVerified == false && <li><NavLink to="/Logginn">Logg inn</NavLink></li>}
+                {gjeldeneBruker.emailVerified == false && <li><NavLink to="/Registrering">Registrering</NavLink></li>}
                   {gjeldeneBruker.emailVerified == true && <li><NavLink to="/">Hjem</NavLink></li>}
                   {gjeldeneBruker.emailVerified == true && <li><NavLink to="/Avstemming">Avstemming</NavLink></li>}
                   {gjeldeneBruker.emailVerified == true && <li><NavLink to="/Nominering">Nominering</NavLink></li>}
                   {gjeldeneBruker.emailVerified == true && <li><NavLink to="/BrukerProfil">Profil</NavLink></li>}
-                  {!gjeldeneBruker && <li><NavLink to="/Logginn">Logg inn</NavLink></li>}
-                  {!gjeldeneBruker && <li><NavLink to="/Registrering">Registrering</NavLink></li>}
-                  {<button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
+                  {gjeldeneBruker.emailVerified == true && <button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
                   {error && <p>{error}</p>}
               </ul>
               
               <ul id="nav-mobile" className="sidenav">
-                {gjeldeneBruker && <li><NavLink to="/">Hjem</NavLink></li>}
-                  {gjeldeneBruker && <li><NavLink to="/Avstemming">Avstemming</NavLink></li>}
-                  {gjeldeneBruker && <li><NavLink to="/Nominering">Nominering</NavLink></li>}
-                  {gjeldeneBruker && <li><NavLink to="/BrukerProfil">Profil</NavLink></li>}
-                  {!gjeldeneBruker && <li><NavLink to="/Logginn">Logg inn</NavLink></li>}
-                  {!gjeldeneBruker && <li><NavLink to="/Registrering">Registrering</NavLink></li>}
-                  {gjeldeneBruker && <button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
+              {gjeldeneBruker.emailVerified == false && <li><NavLink to="/Logginn">Logg inn</NavLink></li>}
+                {gjeldeneBruker.emailVerified == false && <li><NavLink to="/Registrering">Registrering</NavLink></li>}   
+                {gjeldeneBruker.emailVerified == true && <li><NavLink to="/">Hjem</NavLink></li>}
+                {gjeldeneBruker.emailVerified == true && <li><NavLink to="/Avstemming">Avstemming</NavLink></li>}
+                  {gjeldeneBruker.emailVerified == true && <li><NavLink to="/Nominering">Nominering</NavLink></li>}
+                  {gjeldeneBruker.emailVerified == true && <li><NavLink to="/BrukerProfil">Profil</NavLink></li>}
+                  {gjeldeneBruker.emailVerified == true && <button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
                   {error && <p>{error}</p>}
                   
               </ul>

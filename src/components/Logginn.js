@@ -1,13 +1,14 @@
 import React, { useRef, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useAuth } from "../context/authContext"
+import { auth } from "../server/firebase"
 
 function Logginn(){
       //Referanser til verdier
   const emailRef = useRef()
   const passordRef = useRef()
   //Setter i bruk useAuth funksjonen i authContext
-  const { logginn } = useAuth()
+  const { logginn, gjeldeneBruker } = useAuth()
   //Feilmelding state som kan settes der feilmeldinger trenges
   const [error, setError] = useState("")
   //Får å disable ulike ting mens siden loader
@@ -19,7 +20,9 @@ function Logginn(){
   async function handleSubmit(e) {
     e.preventDefault()
 
+    
     try {
+    
       //Hvis det ikke er noen feil
       setError("")
       setLoading(true)
@@ -31,8 +34,9 @@ function Logginn(){
     }
     //Stopper loadinger etter alt har gått gjennom
     setLoading(false)
+  
   }
-
+  
 
     return ( 
     <div className="App">
