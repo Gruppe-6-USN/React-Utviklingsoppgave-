@@ -1,17 +1,19 @@
 import { NavLink, withRouter, useHistory } from 'react-router-dom';
-import React, { useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import { useAuth } from '../context/authContext'
 import M from 'materialize-css';
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, {});
-  });
+
 
 const Navbar = () => {
     const [error, setError] = useState("");
     const { gjeldeneBruker, loggut } = useAuth();
     const history = useHistory();
+
+    useEffect(() => { 
+      M.Sidenav.init(document.querySelectorAll('.sidenav'), {});
+}, [])
+
 
     async function handleLoggut() {
         setError("");
@@ -46,6 +48,7 @@ const Navbar = () => {
         </div> 
         
         )
+        
 
     } else {
     return ( 
