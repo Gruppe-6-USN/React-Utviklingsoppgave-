@@ -22,48 +22,23 @@ const Navbar = () => {
         }catch {
             setError("Utlogging mislykkes")
         }
-    } if(!gjeldeneBruker){
-        return (<div className="App">
-      <nav className="deep-purple darken-4">  
-      <div className="nav-wrapper container nav">
-        
-      <a id="logo-container" href="/" className="brand-logo">USN-valget</a>
-      <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-          <div className="">
-              <ul className="right hide-on-med-and-down">
-        {<li><NavLink to="/Logginn">Logg inn</NavLink></li>}
-        {<li><NavLink to="/Registrering">Registrering</NavLink></li>}
-        {error && <p>{error}</p>}
-        </ul>
-        <ul id="nav-mobile" className="sidenav">
-        {<li><NavLink to="/Logginn">Logg inn</NavLink></li>}
-        {<li><NavLink to="/Registrering">Registrering</NavLink></li>}
-        {<button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
-        </ul>
-        </div>
-        </div>
-        </nav>
-        </div> 
-        
-        )
-
-    } else {
+    }
     return ( 
     <div className="App">
       <nav className="deep-purple darken-4">  
       <div className="nav-wrapper container nav">
-        
+    
       <a id="logo-container" href="/" className="brand-logo">USN-valget</a>
       <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <div className="">
               <ul className="right hide-on-med-and-down">
-                  {gjeldeneBruker.emailVerified == true && <li><NavLink to="/">Hjem</NavLink></li>}
-                  {gjeldeneBruker.emailVerified == true && <li><NavLink to="/Avstemming">Avstemming</NavLink></li>}
-                  {gjeldeneBruker.emailVerified == true && <li><NavLink to="/Nominering">Nominering</NavLink></li>}
-                  {gjeldeneBruker.emailVerified == true && <li><NavLink to="/BrukerProfil">Profil</NavLink></li>}
+                  {gjeldeneBruker && <li><NavLink to="/">Hjem</NavLink></li>}
+                  {gjeldeneBruker && <li><NavLink to="/Avstemming">Avstemming</NavLink></li>}
+                  {gjeldeneBruker && <li><NavLink to="/Nominering">Nominering</NavLink></li>}
+                  {gjeldeneBruker && <li><NavLink to="/BrukerProfil">Profil</NavLink></li>}
                   {!gjeldeneBruker && <li><NavLink to="/Logginn">Logg inn</NavLink></li>}
                   {!gjeldeneBruker && <li><NavLink to="/Registrering">Registrering</NavLink></li>}
-                  {<button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
+                  {gjeldeneBruker && <button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
                   {error && <p>{error}</p>}
               </ul>
               
@@ -87,7 +62,6 @@ const Navbar = () => {
       
     
      );
-}
 }
  
 export default withRouter(Navbar);
