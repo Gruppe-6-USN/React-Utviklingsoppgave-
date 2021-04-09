@@ -18,7 +18,7 @@ export function Registrering() {
   
   
   //Setter i bruk useAuth funksjonen i authContext
-  const { registrer, logginn } = useAuth()
+  const { registrer, logginn, sjekkEpost } = useAuth()
   //Feilmelding state som kan settes der feilmeldinger trenges
   const [error, setError] = useState("")
   //Får å disable ulike ting mens siden loader
@@ -52,18 +52,13 @@ export function Registrering() {
       setLoading(true)
       registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value, checked)
       logginn(emailRef.current.value, passordRef.current.value)
-
-      setTimeout(() => {
-      var user = firebase.auth().currentUser;
-      user.sendEmailVerification().then(function() {
-        return setError("Aktiverings epost er sendt til din epost")// Email sent.
-      }).catch(function(error) {
-        // An error happened.
-        return setError("Dette er ikke en aktiv usn epost")
-      });      
       
-      
-    }, 1000);
+      sjekkEpost()
+      if(sjekkEpost){
+        return setError("Verifiserings email har blitt sendt til din Epost")
+      }else{
+        setError("Verifisering epost har ikke blitt sendt")
+      }
       
     } catch {
       //Alle feil som ikke har blitt laget feilmelding til går her
