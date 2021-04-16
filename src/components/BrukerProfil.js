@@ -11,12 +11,13 @@ export default function App() {
     const [checked, setChecked] = useState(false);
     //Får å disable ulike ting mens siden loader
     const [loading, setLoading] = useState(false);
-    const { gjeldeneBruker, oppdaterMail, oppdaterPassord, oppdaterFNavn, oppdaterENavn, oppdaterNom } = useAuth();
+    const { gjeldeneBruker, oppdaterMail, oppdaterPassord, oppdaterFNavn, oppdaterENavn, oppdaterNom, oppdaterBeskrivelse, nominerbarDisplay } = useAuth();
     const fornavnRef = useRef()
     const etternavnRef = useRef()
     const emailRef = useRef()
     const passordRef = useRef()
     const passordGjRef = useRef()
+    const beskrivelseRef = useRef()
     const nomineringRef = useRef()
     const bildeRef = useRef()
     const history = useHistory()
@@ -66,12 +67,15 @@ export default function App() {
       }
       //Skjekker om Etternavn blir endret hvis det endtres legges det inn i arrayet
       if (etternavnRef.current.value) {
-        regler.push(oppdaterENavn(etternavnRef.current.value))
-      }     
-        
-       
-        
-        
+        await regler.push(oppdaterENavn(etternavnRef.current.value))
+      }
+
+      if(beskrivelseRef.current.value) {
+        await regler.push(oppdaterBeskrivelse(beskrivelseRef.current.value))
+      }
+
+        await uploadBilde(file);
+        await oppdaterNom(checked);
         } catch {
           setError("Opplastning mislykkes")
         }
@@ -110,7 +114,6 @@ export default function App() {
                 {error && <p>{error}</p>}
                 <form action="" className="col s12" onSubmit= {handleSubmit} >
                
-
                         <div className="input-field col s12">
                             <input 
                               type="text" 
@@ -125,6 +128,15 @@ export default function App() {
                               type="text" 
                               placeholder="Etternavn" 
                               ref={etternavnRef} 
+                              className="validate"
+                            />
+                        </div>
+
+                        <div className="input-field col s12">
+                            <input 
+                              type="text" 
+                              placeholder="Beskrivelse"
+                              ref={beskrivelseRef} 
                               className="validate"
                             />
                         </div>
@@ -170,7 +182,8 @@ export default function App() {
                 <form action="" className="col s12" onSubmit={handleNominationChange}>
                 <p>
                           <label>
-                            <input type="checkbox" className="filled-in" onChange={handleNominer} ref={nomineringRef} />
+                            <input type="checkbox" className="" onChange={handleNominer} ref={nomineringRef} />
+                            { nominerbarDisplay === true && <input type="checkbox" className="filled-in" onChange={handleNominer} ref={nomineringRef} /> }
                             <span>Vil du være nominerbar?</span>
                           </label>
                           <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Endre Nominering</button>

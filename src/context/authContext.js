@@ -3,7 +3,7 @@ import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
 import { storage } from "../server/firebase";
 import firebase from 'firebase/app'
-import { useHistory } from "react-router";
+
 
 
 
@@ -23,9 +23,10 @@ export function AuthProvider({ children }) {
   const [gjeldeneBruker, setGjeldeneBruker] = useState()
   const [fornavnDisplay, setFornavnDisplay] = useState()
   const [etternavnDisplay, setEtternavnDisplay] = useState()
+  const [nominerbarDisplay, setNominerbarDisplay] = useState()
   const [loading, setLoading] = useState(true)
   const [errors, setError] = useState("")
-  const history = useHistory()
+  
 
 function stemBruker(id) {
   return db.collection("NominerteBrukere")
@@ -61,14 +62,11 @@ function nominerBruker(fornavn, etternavn, id){
   })
 }
 
-function setNominerbar(fornavn, etternavn, id){
+function setNominerbar(id){
   return db.collection("BrukerInfo")
   .doc(id)
-  .set({
-    Fornavn: fornavn,
-    Etternavn: etternavn,
-    Nominerbar: false,
-    id: id
+  .update({
+    Nominerbar: false
   })
     .then(()=> {
       console.log("Nominerbar er satt til false")
@@ -85,6 +83,7 @@ function setNominerbar(fornavn, etternavn, id){
         Fornavn: fornavn,
         Etternavn: etternavn,
         Nominerbar: nominerbar,
+        beskrivelse: null,
         id: cred.user.uid,
         harStemt: false
 
@@ -137,6 +136,12 @@ function oppdaterNom(nominerbar) {
   })
 } 
 
+function oppdaterBeskrivelse(beskrivelse) {
+  return db.collection('BrukerInfo').doc(gjeldeneBruker.uid).update({
+    beskrivelse: beskrivelse
+  })
+}
+
 function sjekkEpost() {
   setTimeout(() => {
     var user = firebase.auth().currentUser;
@@ -165,8 +170,10 @@ function sjekkEpost() {
         db.collection("BrukerInfo").doc(user.uid).onSnapshot(function (doc){
           const firstName = doc.data().Fornavn;
           const lastName = doc.data().Etternavn;
+          const nominert = doc.data().Nominerbar;
           setFornavnDisplay(firstName);
           setEtternavnDisplay(lastName);
+          setNominerbarDisplay(nominert)
           /*console.log(firstName, lastName)*/
        });
       }, 500);
@@ -182,6 +189,7 @@ function sjekkEpost() {
     gjeldeneBruker,
     fornavnDisplay,
     etternavnDisplay,
+    nominerbarDisplay,
     errors,
     registrer,
     logginn,
@@ -193,6 +201,7 @@ function sjekkEpost() {
     oppdaterFNavn,
     oppdaterENavn,
     oppdaterNom,
+    oppdaterBeskrivelse,
     nominerBruker,
     setNominerbar,
     stemBruker,

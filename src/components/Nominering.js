@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import  { db } from "../server/firebase"
 import { useAuth } from "../context/authContext";
-import { NavLink, withRouter, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -19,12 +19,8 @@ export default function Nominering(){
         .then(snapshot => {
           const documents = snapshot.docs.map(doc => doc.data())
           setBruker(documents);
-          console.log(documents)
         })
     }, [])
-
-
-
 
     async function handleSubmit(id){
         //e.preventDefault();
