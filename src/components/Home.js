@@ -20,7 +20,6 @@ export function Home(){
         })
        })
 
-       async function handleImageError (e) { <img src={'defaultimage/default.png'} width="100" height="100" alt="avatar" /> }
     
 
 
@@ -36,7 +35,6 @@ export function Home(){
                 
                 <br/>
                 <p>Du er logget inn som: </p>
-                { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } onError={handleImageError} width="100" height="100" alt="avatar" className="circle"/> }
                 <br/>
                  {fornavnDisplay}
                 &nbsp;&nbsp;
