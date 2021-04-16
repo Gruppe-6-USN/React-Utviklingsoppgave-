@@ -17,6 +17,8 @@ export default function App() {
     const emailRef = useRef()
     const passordRef = useRef()
     const passordGjRef = useRef()
+    const nomineringRef = useRef()
+    const bildeRef = useRef
     const history = useHistory()
     
     //Sjekker om Eposten har usn.no i seg
@@ -32,7 +34,7 @@ export default function App() {
    console.log(checked)
     }
 
-
+console.log(gjeldeneBruker)
     async function handleSubmit(e) {
       e.preventDefault()
       //Sjekker hvis Eposten er usn og endrer alt til lowercase
@@ -47,30 +49,30 @@ export default function App() {
       
       //Array med regler
       const regler = []
-      setLoading(true)
-      setError("")
+
       
-      //Skjekker at den nye mailen som blir tastet inn ikke er lik den gjeldene mailen
+
+
+      try {
+        setError("")
+        setLoading(true) 
+              //Skjekker at den nye mailen som blir tastet inn ikke er lik den gjeldene mailen
       if (emailRef.current.value !== gjeldeneBruker.email) {
         //Hvis spørringen over er true blir den nye mailen lagt inn som ny mail i arrayet
-        regler.push(oppdaterMail(emailRef.current.value))
+       await regler.push(oppdaterMail(emailRef.current.value))
       }
       //Skjekker om passord blir endret hvis det endtres legges det inn i arrayet
       if (passordRef.current.value) {
-        regler.push(oppdaterPassord(passordRef.current.value))
+        await regler.push(oppdaterPassord(passordRef.current.value))
       }
       //Skjekker om Fornavnet blir endret hvis det endtres legges det inn i arrayet
       if (fornavnRef.current.value) {
-        regler.push(oppdaterFNavn(fornavnRef.current.value))
+        await regler.push(oppdaterFNavn(fornavnRef.current.value))
       }
       //Skjekker om Etternavn blir endret hvis det endtres legges det inn i arrayet
       if (etternavnRef.current.value) {
         regler.push(oppdaterENavn(etternavnRef.current.value))
-      }
-
-      try {
-        setError("")
-        setLoading(true)        
+      }     
         await uploadBilde(file);
         await oppdaterNom(checked);
         } catch {
