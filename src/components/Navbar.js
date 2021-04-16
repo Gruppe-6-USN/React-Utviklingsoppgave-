@@ -40,7 +40,7 @@ const Navbar = () => {
         <ul id="nav-mobile" className="sidenav">
         {<li><NavLink to="/Logginn">Logg inn</NavLink></li>}
         {<li><NavLink to="/Registrering">Registrering</NavLink></li>}
-        {<button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
+        
         </ul>
         </div>
         </div>
