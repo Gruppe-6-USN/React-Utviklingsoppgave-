@@ -33,18 +33,21 @@ export function Home(){
     <div className="App">
         <div className="row">
             <div className="col s12 offset-m4 m4 card-panel">
+                
                 <br/>
-            <img src= {poster} width="610" height="1000" alt="poster"/>
                 <p>Du er logget inn som: </p>
-                <strong>Fornavn: </strong> {fornavnDisplay}
+                { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } onError={handleImageError} width="100" height="100" alt="avatar" className="circle"/> }
                 <br/>
-                <strong>Etternavn: </strong> {etternavnDisplay}
+                 {fornavnDisplay}
+                &nbsp;&nbsp;
+                 {etternavnDisplay}
                 <br/>
                 <strong>Email: </strong> {gjeldeneBruker.email}
-                <br/>
-                <strong>UID: </strong>{gjeldeneBruker.uid}
-                <br/>
-                { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } onError={handleImageError} width="100" height="100" alt="avatar" className="circle"/> }
+                
+                
+            <img src= {poster} width="100%" height="auto" alt="poster"/>
+
+            
                 
                 
                   
