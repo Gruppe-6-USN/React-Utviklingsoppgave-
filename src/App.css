@@ -1,20 +1,20 @@
 .App {
- text-decoration: none;
+  text-decoration: none;
 }
 
-nav ul a, nav .brand-logo {
-  color: white
+nav ul a,
+nav .brand-logo {
+  color: white;
 }
 
 .sidenav-trigger {
   color: white;
 }
 
-a:hover 
-{
-   color:#ffffff; 
-   text-decoration:none; 
-   cursor:pointer;  
+a:hover {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .btn {
@@ -32,17 +32,17 @@ a:hover
 }
 
 input:not([type]):focus:not([readonly]),
-input[type=text]:not(.browser-default):focus:not([readonly]), 
-input[type=password]:not(.browser-default):focus:not([readonly]), 
-input[type=email]:not(.browser-default):focus:not([readonly]), 
-input[type=url]:not(.browser-default):focus:not([readonly]), 
-input[type=time]:not(.browser-default):focus:not([readonly]), 
-input[type=date]:not(.browser-default):focus:not([readonly]), 
-input[type=datetime]:not(.browser-default):focus:not([readonly]), 
-input[type=datetime-local]:not(.browser-default):focus:not([readonly]), 
-input[type=tel]:not(.browser-default):focus:not([readonly]), 
-input[type=number]:not(.browser-default):focus:not([readonly]), 
-input[type=search]:not(.browser-default):focus:not([readonly]), 
+input[type="text"]:not(.browser-default):focus:not([readonly]),
+input[type="password"]:not(.browser-default):focus:not([readonly]),
+input[type="email"]:not(.browser-default):focus:not([readonly]),
+input[type="url"]:not(.browser-default):focus:not([readonly]),
+input[type="time"]:not(.browser-default):focus:not([readonly]),
+input[type="date"]:not(.browser-default):focus:not([readonly]),
+input[type="datetime"]:not(.browser-default):focus:not([readonly]),
+input[type="datetime-local"]:not(.browser-default):focus:not([readonly]),
+input[type="tel"]:not(.browser-default):focus:not([readonly]),
+input[type="number"]:not(.browser-default):focus:not([readonly]),
+input[type="search"]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid #321aa0a6;
   -webkit-box-shadow: 0 1px 0 0 #321aa0a6;
@@ -50,8 +50,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .row {
- margin: auto !important;
-
+  margin: auto !important;
 }
 
 #blah {
@@ -59,31 +58,30 @@ textarea.materialize-textarea:focus:not([readonly]) {
   object-fit: cover;
 }
 
-.nominerKort{
+.nominerKort {
   width: 400px;
 }
 
-.nominerKort p{
+.nominerKort p {
   float: left;
   margin-right: 5px;
   height: auto;
 }
 
-.float-right{
-float: right;
-margin-top: 18px;
+.float-right {
+  float: right;
+  margin-top: 18px;
 }
 
-.width-margin{
+.width-margin {
   width: 400px !important;
   margin: 0 10px 10px 0;
 }
 
-.nomList{
+.nomList {
   list-style: none;
 }
 
-.nomList :hover{
-  color:#311b92;
+.nomList :hover {
+  color: #311b92;
 }
-
