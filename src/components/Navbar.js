@@ -71,7 +71,6 @@ const Navbar = () => {
               </ul>
               
               <ul id="nav-mobile" className="sidenav">
-<<<<<<< HEAD
                 {gjeldeneBruker && <li><NavLink to="/">Hjem</NavLink></li>}
                   {gjeldeneBruker && <li><NavLink to="/Avstemming">Avstemming</NavLink></li>}
                   {gjeldeneBruker && <li><NavLink to="/Nominering">Nominering</NavLink></li>}
@@ -80,17 +79,6 @@ const Navbar = () => {
                   {!gjeldeneBruker && <li><NavLink to="/Registrering">Registrering</NavLink></li>}
                   {gjeldeneBruker && <button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
                   {error && <p>{error}</p>}   
-=======
-              {gjeldeneBruker.emailVerified == false && <li><NavLink to="/Logginn">Logg inn</NavLink></li>}
-                {gjeldeneBruker.emailVerified == false && <li><NavLink to="/Registrering">Registrering</NavLink></li>}   
-                {gjeldeneBruker.emailVerified == true && <li><NavLink to="/">Hjem</NavLink></li>}
-                {gjeldeneBruker.emailVerified == true && <li><NavLink to="/Avstemming">Avstemming</NavLink></li>}
-                  {gjeldeneBruker.emailVerified == true && <li><NavLink to="/Nominering">Nominering</NavLink></li>}
-                  {gjeldeneBruker.emailVerified == true && <li><NavLink to="/BrukerProfil">Profil</NavLink></li>}
-                  {gjeldeneBruker.emailVerified == true && <button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
-                  {error && <p>{error}</p>}
-                  
->>>>>>> 153a975aeca044acdceafd19201e7b7893515ed2
               </ul>
             </div>
             </div>
