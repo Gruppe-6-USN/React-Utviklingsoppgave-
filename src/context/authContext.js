@@ -85,6 +85,7 @@ function setNominerbar(fornavn, etternavn, id){
         Fornavn: fornavn,
         Etternavn: etternavn,
         Nominerbar: nominerbar,
+        beskrivelse: null,
         id: cred.user.uid,
         harStemt: false
 
@@ -136,6 +137,12 @@ function oppdaterNom(nominerbar) {
     Nominerbar: nominerbar
   })
 } 
+
+function oppdaterBeskrivelse(beskrivelse) {
+  return db.collection('BrukerInfo').doc(gjeldeneBruker.uid).update({
+    beskrivelse: beskrivelse
+  })
+}
 
 function sjekkEpost() {
   setTimeout(() => {
@@ -193,6 +200,7 @@ function sjekkEpost() {
     oppdaterFNavn,
     oppdaterENavn,
     oppdaterNom,
+    oppdaterBeskrivelse,
     nominerBruker,
     setNominerbar,
     stemBruker,

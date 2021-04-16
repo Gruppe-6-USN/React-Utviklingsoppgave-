@@ -23,9 +23,6 @@ export default function Nominering(){
         })
     }, [])
 
-
-
-
     async function handleSubmit(id){
         //e.preventDefault();
         const brukerFinner = brukere.find(bruker => bruker.id === id)
