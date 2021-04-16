@@ -19,7 +19,6 @@ export default function Nominering(){
         .then(snapshot => {
           const documents = snapshot.docs.map(doc => doc.data())
           setBruker(documents);
-          console.log(documents)
         })
     }, [])
 
