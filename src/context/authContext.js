@@ -23,6 +23,7 @@ export function AuthProvider({ children }) {
   const [gjeldeneBruker, setGjeldeneBruker] = useState()
   const [fornavnDisplay, setFornavnDisplay] = useState()
   const [etternavnDisplay, setEtternavnDisplay] = useState()
+  const [nominerbarDisplay, setNominerbarDisplay] = useState()
   const [loading, setLoading] = useState(true)
   const [errors, setError] = useState("")
   
@@ -169,8 +170,10 @@ function sjekkEpost() {
         db.collection("BrukerInfo").doc(user.uid).onSnapshot(function (doc){
           const firstName = doc.data().Fornavn;
           const lastName = doc.data().Etternavn;
+          const nominert = doc.data().Nominerbar;
           setFornavnDisplay(firstName);
           setEtternavnDisplay(lastName);
+          setNominerbarDisplay(nominert)
           /*console.log(firstName, lastName)*/
        });
       }, 500);
@@ -186,6 +189,7 @@ function sjekkEpost() {
     gjeldeneBruker,
     fornavnDisplay,
     etternavnDisplay,
+    nominerbarDisplay,
     errors,
     registrer,
     logginn,

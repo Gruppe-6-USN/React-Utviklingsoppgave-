@@ -11,7 +11,7 @@ export default function App() {
     const [checked, setChecked] = useState(false);
     //Får å disable ulike ting mens siden loader
     const [loading, setLoading] = useState(false);
-    const { gjeldeneBruker, oppdaterMail, oppdaterPassord, oppdaterFNavn, oppdaterENavn, oppdaterNom, oppdaterBeskrivelse } = useAuth();
+    const { gjeldeneBruker, oppdaterMail, oppdaterPassord, oppdaterFNavn, oppdaterENavn, oppdaterNom, oppdaterBeskrivelse, nominerbarDisplay } = useAuth();
     const fornavnRef = useRef()
     const etternavnRef = useRef()
     const emailRef = useRef()
@@ -183,6 +183,7 @@ export default function App() {
                 <p>
                           <label>
                             <input type="checkbox" className="filled-in" onChange={handleNominer} ref={nomineringRef} />
+                            { nominerbarDisplay === true && <input type="checkbox" className="filled-in" onChange={handleNominer} ref={nomineringRef} checked /> }
                             <span>Vil du være nominerbar?</span>
                           </label>
                           <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Endre Nominering</button>
