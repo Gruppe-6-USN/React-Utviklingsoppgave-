@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '../context/authContext'
 import { storage } from "../server/firebase";
-
+import poster from './poster.jpg';
 
 
 export function Home(){
@@ -33,6 +33,8 @@ export function Home(){
     <div className="App">
         <div className="row">
             <div className="col s12 offset-m4 m4 card-panel">
+                <br/>
+            <img src= {poster} width="610" height="1000" alt="poster"/>
                 <p>Du er logget inn som: </p>
                 <strong>Fornavn: </strong> {fornavnDisplay}
                 <br/>
@@ -43,6 +45,8 @@ export function Home(){
                 <strong>UID: </strong>{gjeldeneBruker.uid}
                 <br/>
                 { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } onError={handleImageError} width="100" height="100" alt="avatar" className="circle"/> }
+                
+                
                   
             </div>
         </div>
