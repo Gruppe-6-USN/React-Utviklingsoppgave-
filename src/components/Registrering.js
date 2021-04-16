@@ -1,8 +1,7 @@
 import React, { useRef, useState } from "react"
-import { Link, useHistory } from "react-router-dom"
+import { Link, Redirect, useHistory } from "react-router-dom"
 import { useAuth } from "../context/authContext"
-import app from "../server/firebase";
-import firebase from 'firebase/app'
+
 
 import 'firebase/auth';
 
@@ -18,7 +17,7 @@ export function Registrering() {
   
   
   //Setter i bruk useAuth funksjonen i authContext
-  const { registrer, logginn, sjekkEpost } = useAuth()
+  const { registrer, sjekkEpost} = useAuth()
   //Feilmelding state som kan settes der feilmeldinger trenges
   const [error, setError] = useState("")
   //Får å disable ulike ting mens siden loader
@@ -33,6 +32,8 @@ export function Registrering() {
  function handleChange(e) {
    setChecked(e.target.checked)
    console.log(checked)
+  
+   
  }
    
   //Funksjon som settes for <form> sår kjører når det blir submittet
@@ -51,19 +52,25 @@ export function Registrering() {
       setError("")
       setLoading(true)
       registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value, checked)
+      setTimeout(() => {
+        history.push("/Logginn")
+      
+      }, 3000);
+  
       
 
       // Setter en timeout slik at eposten blir lagt i databasen før den forsøker å sende epost
       //Sjekker om eposten finnes og sender en aktiverings epost.
     sjekkEpost()
     if(sjekkEpost){
-      return setError("Verifiserings mail er sendt til din email");
+      return setError("Verifiserings mail er sendt til din email"); 
     }else{ 
         setError("Din email er ikke en gyldig USN email.");
 
       }
       
       
+    
     } catch {
       //Alle feil som ikke har blitt laget feilmelding til går her
       setError("Registrering mislykkes")
@@ -111,6 +118,7 @@ export function Registrering() {
                 </form>
                 <p>Allerede registrert? <Link to="/Logginn">Logg inn</Link></p>
             </div>
+          
         </div>
     </div>
      

@@ -15,7 +15,7 @@ function GlemtPassord() {
       event.preventDefault()
 
       try {
-         setMessage('');
+        setMessage('');
          setError('');
          setLoading(true);
          await glemtPassord(emailRef.current.value);
@@ -34,7 +34,7 @@ function GlemtPassord() {
             <div className="col s12 offset-m4 m4 card-panel">
                 <h2>Glemt Passord</h2>
                 {error && <p>{error}</p>}
-                {message && <p>variant="success"{message}</p>}
+                {message && <p>{message}</p>}
                 <form onSubmit={handleSubmit} className="col s12">
                     <div className="row">
                         <div className="input-field col s12">
