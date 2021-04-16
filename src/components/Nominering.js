@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import  { db } from "../server/firebase"
 import { useAuth } from "../context/authContext";
-import { NavLink, withRouter, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -27,7 +27,7 @@ export default function Nominering(){
         //e.preventDefault();
         const brukerFinner = brukere.find(bruker => bruker.id === id)
         await nominerBruker(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id )
-        await setNominerbar(brukerFinner.id)
+        await setNominerbar(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id)
         console.log(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id)
         window.location.reload()
     }

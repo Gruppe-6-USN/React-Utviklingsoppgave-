@@ -1,14 +1,14 @@
 import React, { useRef, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useAuth } from "../context/authContext"
-import { auth } from "../server/firebase"
+
 
 function Logginn(){
       //Referanser til verdier
   const emailRef = useRef()
   const passordRef = useRef()
   //Setter i bruk useAuth funksjonen i authContext
-  const { logginn, gjeldeneBruker } = useAuth()
+  const { logginn } = useAuth()
   //Feilmelding state som kan settes der feilmeldinger trenges
   const [error, setError] = useState("")
   //Får å disable ulike ting mens siden loader

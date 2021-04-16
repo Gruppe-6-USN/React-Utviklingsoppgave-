@@ -3,7 +3,7 @@ import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
 import { storage } from "../server/firebase";
 import firebase from 'firebase/app'
-import { useHistory } from "react-router";
+
 
 
 
@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
   const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
   const [errors, setError] = useState("")
-  const history = useHistory()
+  
 
 function stemBruker(id) {
   return db.collection("NominerteBrukere")
