@@ -10,8 +10,7 @@ export default function Nominering(){
     const { nominerBruker, setNominerbar, gjeldeneBruker } = useAuth()
     const fornavnRef = useRef()
     const etternavnRef = useRef()
-
-    
+    const beskrivelseRef = useRef()
     
     useEffect(() => {
         db.collection('BrukerInfo')
@@ -20,9 +19,11 @@ export default function Nominering(){
         .then(snapshot => {
           const documents = snapshot.docs.map(doc => doc.data())
           setBruker(documents);
-          //console.log(documents)
+          console.log(documents)
         })
     }, [])
+
+
 
 
     async function handleSubmit(id){
@@ -50,6 +51,7 @@ export default function Nominering(){
             <div className="col width-margin m6 card-panel nominerKort" key= {bruker.id} >
                 <p ref={ fornavnRef } > { bruker.Fornavn } </p>
                 <p ref={ etternavnRef } > { bruker.Etternavn } </p>
+                <p ref={ beskrivelseRef } >{ bruker.beskrivelse }</p>
                 <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } >Nominér</button> 
             </div>
         )}
