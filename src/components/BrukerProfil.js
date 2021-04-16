@@ -182,8 +182,8 @@ export default function App() {
                 <form action="" className="col s12" onSubmit={handleNominationChange}>
                 <p>
                           <label>
-                            <input type="checkbox" className="filled-in" onChange={handleNominer} ref={nomineringRef} />
-                            { nominerbarDisplay === true && <input type="checkbox" className="filled-in" onChange={handleNominer} ref={nomineringRef} checked /> }
+                            <input type="checkbox" className="" onChange={handleNominer} ref={nomineringRef} />
+                            { nominerbarDisplay === true && <input type="checkbox" className="filled-in" onChange={handleNominer} ref={nomineringRef} /> }
                             <span>Vil du være nominerbar?</span>
                           </label>
                           <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Endre Nominering</button>
