@@ -92,7 +92,6 @@ export default function App() {
     }
 
     async function handlePictureUpload(e) {
-      e.preventDefault()
       await uploadBilde(file)
     }
 
@@ -105,7 +104,7 @@ export default function App() {
     <div className="App">
         <div className="row">
             <div className="col s12 offset-m4 m4 card-panel">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />  
+            {/*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />*/}
 
                 <h3>Oppdater profil</h3>
                 {error && <p>{error}</p>}
@@ -183,7 +182,7 @@ export default function App() {
                         <input type="file" id="imgInp" onChange={handleChange} ref={bildeRef}/>
                         <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Last opp bilde</button>
                 </form>
-                <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar" className="circle"/>
+                {/*<img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar" className="circle"/>*/}
             </div>
             </div>
         </div>
