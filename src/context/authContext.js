@@ -3,6 +3,8 @@ import  { auth, db } from "../server/firebase"
 import 'firebase/firestore';
 import { storage } from "../server/firebase";
 import firebase from 'firebase/app'
+import { useHistory } from "react-router";
+
 
 
 
@@ -23,6 +25,7 @@ export function AuthProvider({ children }) {
   const [etternavnDisplay, setEtternavnDisplay] = useState()
   const [loading, setLoading] = useState(true)
   const [errors, setError] = useState("")
+  const history = useHistory()
 
 function stemBruker(id) {
   return db.collection("NominerteBrukere")
@@ -58,17 +61,20 @@ function nominerBruker(fornavn, etternavn, id){
   })
 }
 
-function setNominerbar(id){
+function setNominerbar(fornavn, etternavn, id){
   return db.collection("BrukerInfo")
   .doc(id)
-  .update({
-    Nominerbar: false
+  .set({
+    Fornavn: fornavn,
+    Etternavn: etternavn,
+    Nominerbar: false,
+    id: id
   })
     .then(()=> {
       console.log("Nominerbar er satt til false")
     })
     .then((error) =>{
-      console.log("Kunne ikke endre nimonerbar")
+      console.log("Kunne ikke endre nominerbar")
     })
 }
 
@@ -81,7 +87,10 @@ function setNominerbar(id){
         Nominerbar: nominerbar,
         id: cred.user.uid,
         harStemt: false
+
+        
       })
+      
     })
     
   }
@@ -126,14 +135,14 @@ function oppdaterNom(nominerbar) {
   return db.collection('BrukerInfo').doc(gjeldeneBruker.uid).update({
     Nominerbar: nominerbar
   })
-}
+} 
 
 function sjekkEpost() {
   setTimeout(() => {
     var user = firebase.auth().currentUser;
     user.sendEmailVerification().then(function() {
       return setError("Aktiverings epost er sendt til din epost")// Email sent.
-    }).catch(function(error) {
+    }).catch(function(errors) {
       // An error happened.
       return setError("Dette er ikke en aktiv usn epost")
     });      
@@ -141,6 +150,8 @@ function sjekkEpost() {
     
   }, 2000);
 }
+
+
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
   //setTimeout setter en delay før den skal displaye fornavn og etternavn
@@ -186,7 +197,8 @@ function sjekkEpost() {
     setNominerbar,
     stemBruker,
     brukerHarStemt,
-    sjekkEpost
+    sjekkEpost,
+    
     
   }
 
