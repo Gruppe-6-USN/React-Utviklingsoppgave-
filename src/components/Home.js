@@ -15,15 +15,18 @@ export function Home(){
         setPicUrl(url);
         gjeldeneBruker.updateProfile({
           photoURL: picUrl
+        
+        
         })
        })
 
+       async function handleImageError (e) { <img src={'defaultimage/default.png'} width="100" height="100" alt="avatar" /> }
     
 
 
 
 
-     
+       
   
 
     return ( 
@@ -39,12 +42,14 @@ export function Home(){
                 <br/>
                 <strong>UID: </strong>{gjeldeneBruker.uid}
                 <br/>
-                { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } width="100" height="100" alt="avatar" className="circle"/> }
+                { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } onError={handleImageError} width="100" height="100" alt="avatar" className="circle"/> }
                   
             </div>
         </div>
     </div>
+     
      );
+     
 
      
 }
