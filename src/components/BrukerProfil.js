@@ -18,7 +18,7 @@ export default function App() {
     const passordRef = useRef()
     const passordGjRef = useRef()
     const nomineringRef = useRef()
-    const bildeRef = useRef
+    const bildeRef = useRef()
     const history = useHistory()
     
     //Sjekker om Eposten har usn.no i seg
@@ -34,7 +34,7 @@ export default function App() {
    console.log(checked)
     }
 
-console.log(gjeldeneBruker)
+//console.log(gjeldeneBruker)
     async function handleSubmit(e) {
       e.preventDefault()
       //Sjekker hvis Eposten er usn og endrer alt til lowercase
@@ -45,14 +45,9 @@ console.log(gjeldeneBruker)
       //Skjekker om passordene er like
       if (passordRef.current.value !== passordGjRef.current.value) {
         return setError("Passord matcher ikke")
-      }
-      
+      }   
       //Array med regler
       const regler = []
-
-      
-
-
       try {
         setError("")
         setLoading(true) 
@@ -73,8 +68,10 @@ console.log(gjeldeneBruker)
       if (etternavnRef.current.value) {
         regler.push(oppdaterENavn(etternavnRef.current.value))
       }     
-        await uploadBilde(file);
-        await oppdaterNom(checked);
+        
+       
+        
+        
         } catch {
           setError("Opplastning mislykkes")
         }
@@ -92,6 +89,16 @@ console.log(gjeldeneBruker)
         .finally(() => {
           setLoading(false)
         })
+    }
+
+    async function handlePictureUpload(e) {
+      e.preventDefault()
+      await uploadBilde(file)
+    }
+
+    async function handleNominationChange(e) {
+      e.preventDefault()
+      await oppdaterNom(checked)
     }
   
     return (
@@ -150,23 +157,33 @@ console.log(gjeldeneBruker)
                             />
                         </div>
                         
-                        <p>
-                          <label>
-                            <input type="checkbox" className="filled-in" onChange={handleNominer} />
-                            <span>Vil du være nominerbar?</span>
-                          </label>
-                        </p>
+                        
 
-                        <h5>Last opp/endre profilbilde: </h5>
-                        <input type="file" id="imgInp" onChange={handleChange}/>
+                        
                
                         {error && <p> {error} </p> }
                         <br></br>
-                        <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar" className="circle"/>
+                        
                     
-                    <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Oppdater</button>
+                    <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Oppdater info</button>
                     <Link to="/">Avslutt</Link>
                 </form>
+                <form action="" className="col s12" onSubmit={handleNominationChange}>
+                <p>
+                          <label>
+                            <input type="checkbox" className="filled-in" onChange={handleNominer} ref={nomineringRef} />
+                            <span>Vil du være nominerbar?</span>
+                          </label>
+                          <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Endre Nominering</button>
+                </p>
+                </form>
+
+                <form action="" className="col s12" onSubmit= {handlePictureUpload}>
+                <h5>Last opp/endre profilbilde: </h5>
+                        <input type="file" id="imgInp" onChange={handleChange} ref={bildeRef}/>
+                        <button disabled={loading} type="submit" className="btn waves-effect waves-light right">Last opp bilde</button>
+                </form>
+                <img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar" className="circle"/>
             </div>
             </div>
         </div>

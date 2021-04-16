@@ -26,7 +26,7 @@ export default function Avstemming() {
         .onSnapshot(function (doc){
             const stemmeSjekk = doc.data().harStemt;
             //console.log(stemmeSjekk)
-            if(stemmeSjekk == true){
+            if(stemmeSjekk === true){
                 setharStemt(stemmeSjekk)
             }
             
