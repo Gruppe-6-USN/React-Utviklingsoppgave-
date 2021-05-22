@@ -49,6 +49,48 @@ textarea.materialize-textarea:focus:not([readonly]) {
   box-shadow: 0 1px 0 0 #321aa0a6;
 }
 
+
+.stor-text{
+  color: white;
+  background-color: #311b92;
+  text-align: center;
+  height: auto;
+  width: auto;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: auto;
+  font-weight: bold;
+  color: floralwhite;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-decoration: underline overline;
+  box-shadow: 10px 10px grey;
+}
+
+.liten-text {
+  font-family: 'Open Sans', sans-serif;
+  color: #000000;
+  font-size: auto;
+  text-align: center;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.backgroundposter {
+  background: antiquewhite;
+  padding-top: 144px;
+  padding-bottom: 144px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  margin-top: 80px;
+  border-radius: 25px;
+  box-shadow: 10px 10px grey;
+}
+
 .row {
   margin: auto !important;
 }
@@ -85,6 +127,12 @@ textarea.materialize-textarea:focus:not([readonly]) {
     width: 300px !important;
     margin: 0 10px 10px 0;
   }
+  .stor-text {
+    font-size: 140%;
+}
+.liten-text {
+    font-size: 120%;
+}
 }
 
 
