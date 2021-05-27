@@ -31,12 +31,8 @@ export function Home(){
     <div className="App">
         <div className="row">
             <div className="col s12 offset-m4 m4 card-panel">
-                
-                <br/>
-                <p>Du er logget inn som: </p>
-                <br/>
                  {fornavnDisplay}
-                &nbsp;&nbsp;
+                &nbsp;
                  {etternavnDisplay}
                 <br/>
                 <strong>Email: </strong> {gjeldeneBruker.email}

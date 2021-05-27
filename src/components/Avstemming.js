@@ -29,10 +29,10 @@ export default function Avstemming() {
             if(stemmeSjekk === true){
                 setharStemt(stemmeSjekk)
             }
-            
+            return unsub
         })
         
-        return unsub
+        
     }, [])
 
     
