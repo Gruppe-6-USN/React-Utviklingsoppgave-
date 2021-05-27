@@ -6,7 +6,8 @@ export default function Avstemming() {
 
     const [brukere, setBruker] = useState("")
     const [harStemt, setharStemt] = useState();
-    const { stemBruker, brukerHarStemt, gjeldeneBruker } = useAuth()
+    const [voteId, setVoteId] = useState()
+    const { stemBruker, brukerHarStemt, gjeldeneBruker, votedOn } = useAuth()
     const fornavnRef = useRef()
     const etternavnRef = useRef()
 
@@ -25,6 +26,8 @@ export default function Avstemming() {
         const unsub = db.collection('BrukerInfo').doc(gjeldeneBruker.uid)
         .onSnapshot(function (doc){
             const stemmeSjekk = doc.data().harStemt;
+            const votedId = doc.data().votedOn
+            setVoteId(votedId)
             //console.log(stemmeSjekk)
             if(stemmeSjekk === true){
                 setharStemt(stemmeSjekk)
@@ -39,9 +42,18 @@ export default function Avstemming() {
 
     async function handleSubmit(id) {
         const brukerFinner = brukere.find(bruker => bruker.id === id)
-        await stemBruker(brukerFinner.id);
+        await stemBruker(brukerFinner.id, 1);
         //console.log(gjeldeneBruker)
-        await brukerHarStemt(gjeldeneBruker.uid)
+        await brukerHarStemt(gjeldeneBruker.uid, true)
+        await votedOn(gjeldeneBruker.uid, brukerFinner.id)
+        
+    }
+
+   async function handleRegret() {
+        await stemBruker(voteId, -1)
+        await brukerHarStemt(gjeldeneBruker.uid, false)
+        await votedOn(gjeldeneBruker.uid, "")
+        window.location.reload()
         
     }
 
@@ -52,15 +64,16 @@ export default function Avstemming() {
         <p>Trykk på "stem" for å stemme på en kandidat. Kandidaten vil da få en stemme</p>
         { brukere && brukere.map(bruker => {
         return(
-            <div className="col width-margin m6 card-panel nominerKort" key= {bruker.id} >
+            <div className="col width-margin m6 card-panel nominerKort" key= {bruker.id}>
                 <p ref={ fornavnRef } > { bruker.Fornavn } </p>
                 <p ref={ etternavnRef } > { bruker.Etternavn } </p>
-                { !harStemt && <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } >Stem</button>}
-                { harStemt && <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } disabled >Stem</button>}
+                {  !harStemt && <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } >Stem</button>}
+                {   harStemt && <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } disabled >Stem</button>}
             </div>
         )}
         )
         }
+        { harStemt && <button className="float-right btn waves-effect waves-light" onClick= {() => handleRegret()}>Angre</button>}
         </div>
     </div>
      );

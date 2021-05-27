@@ -28,19 +28,28 @@ export function AuthProvider({ children }) {
   const [errors, setError] = useState("")
   
 
-function stemBruker(id) {
+function stemBruker(id, valueChange) {
   return db.collection("NominerteBrukere")
   .doc(id)
   .update({
-    antallStemmer: firebase.firestore.FieldValue.increment(1)
+    antallStemmer: firebase.firestore.FieldValue.increment(valueChange)
   })
 }
 
-function brukerHarStemt(id) {
+
+function brukerHarStemt(id, booleanParam) {
   return db.collection("BrukerInfo")
   .doc(id)
   .update({
-    harStemt: true
+    harStemt: booleanParam
+  })
+}
+
+function votedOn(id, stemtId) {
+  return db.collection("BrukerInfo")
+  .doc(id)
+  .update({
+    votedOn: stemtId
   })
 }
 
@@ -208,6 +217,7 @@ function sjekkEpost() {
     stemBruker,
     brukerHarStemt,
     sjekkEpost,
+    votedOn
     
     
   }
