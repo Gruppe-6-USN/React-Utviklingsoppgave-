@@ -179,9 +179,10 @@ function sjekkEpost() {
       }, 500);
       }
       setLoading(false)
+      return unsubscribe
     })
 
-    return unsubscribe
+    
   }, [])
 
   //Ulike verdier man gir Provider tilgang til å lytte etter
