@@ -60,7 +60,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-left: 15px;
   margin-top: 25px;
   margin-bottom: 25px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: auto;
   font-weight: bold;
   color: floralwhite;
