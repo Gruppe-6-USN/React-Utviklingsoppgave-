@@ -2,6 +2,7 @@ import { NavLink, withRouter, useHistory } from 'react-router-dom';
 import React, {useEffect, useState } from 'react'
 import { useAuth } from '../context/authContext'
 import M from 'materialize-css';
+import Logo from '../USN_logo_rgb_neg.png'
 
 
 

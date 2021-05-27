@@ -94,7 +94,8 @@ function setNominerbar(id){
         Nominerbar: nominerbar,
         beskrivelse: null,
         id: cred.user.uid,
-        harStemt: false
+        harStemt: false,
+        votedOn:""
 
         
       })
