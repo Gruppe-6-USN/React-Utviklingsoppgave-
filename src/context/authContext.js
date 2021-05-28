@@ -154,7 +154,7 @@ function sjekkEpost() {
     var user = firebase.auth().currentUser;
     user.sendEmailVerification().then(function() {
       return setError("Aktiverings epost er sendt til din epost")// Email sent.
-    }).catch(function(errors) {
+    }).catch(function() {
       // An error happened.
       return setError("Dette er ikke en aktiv usn epost")
     });      
@@ -170,7 +170,6 @@ function sjekkEpost() {
   //3. Unsubscribe gjør slik at etter eventen har skjedd, stopper serveren å lytte til den
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
-      /*console.log(user);*/
       setGjeldeneBruker(user)
       if(user) {
         setTimeout(() => {
