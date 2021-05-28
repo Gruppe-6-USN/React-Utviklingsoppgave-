@@ -30,14 +30,6 @@ export function Home(){
     <div className="App">
         <div className="row">
             <div className="col s12 offset-m4 m4 card-panel">
-                 {fornavnDisplay}
-                &nbsp;
-                 {etternavnDisplay}
-                <br/>
-                <strong>Email: </strong> {gjeldeneBruker.email}
-                
-                
-         
                 <div class = "background">
                     <div class ="stor-text">VELKOMMEN TIL USN VALGET</div>
                     <div class ="liten-text">GRUPPE 6 PRESENTERER</div>
