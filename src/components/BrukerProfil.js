@@ -74,8 +74,7 @@ export default function App() {
         await regler.push(oppdaterBeskrivelse(beskrivelseRef.current.value))
       }
 
-        await uploadBilde(file);
-        await oppdaterNom(checked);
+
         } catch {
           setError("Opplastning mislykkes")
         }

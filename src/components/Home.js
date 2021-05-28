@@ -4,7 +4,7 @@ import { storage } from "../server/firebase";
 
 
 export function Home(){
-    const { gjeldeneBruker, fornavnDisplay, etternavnDisplay  } = useAuth();
+    const { gjeldeneBruker  } = useAuth();
     const [picUrl, setPicUrl] = useState()
 
     

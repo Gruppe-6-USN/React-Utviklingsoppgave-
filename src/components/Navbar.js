@@ -81,6 +81,7 @@ const Navbar = () => {
                   {!gjeldeneBruker && <li><NavLink to="/Logginn">Logg inn</NavLink></li>}
                   {!gjeldeneBruker && <li><NavLink to="/Registrering">Registrering</NavLink></li>}
                   {gjeldeneBruker && <button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
+                  { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } onError={handleImageError} width="100" height="100" alt="avatar" className="circle z-depth-2"/> }
                   {error && <p>{error}</p>}   
               </ul>
             </div>

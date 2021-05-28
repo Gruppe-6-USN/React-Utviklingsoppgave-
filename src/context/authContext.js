@@ -96,10 +96,7 @@ function setNominerbar(id){
         id: cred.user.uid,
         harStemt: false,
         votedOn:""
-
-        
       })
-      
     })
     
   }
