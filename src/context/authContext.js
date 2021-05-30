@@ -54,12 +54,13 @@ function votedOn(id, stemtId) {
 }
 
  
-function nominerBruker(fornavn, etternavn, id){
+function nominerBruker(fornavn, etternavn, beskrivelse, id){
   return db.collection("NominerteBrukere")
   .doc(id)
   .set({
     Fornavn: fornavn,
     Etternavn: etternavn,
+    beskrivelse: beskrivelse,
     id: id ,
     antallStemmer: 0
   })

@@ -24,7 +24,7 @@ export default function Nominering(){
 
     async function handleSubmit(id){
         const brukerFinner = brukere.find(bruker => bruker.id === id)
-        await nominerBruker(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id )
+        await nominerBruker(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.beskrivelse, brukerFinner.id )
         await setNominerbar(brukerFinner.id)
         //console.log(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id)
         window.location.reload()
@@ -44,8 +44,8 @@ export default function Nominering(){
         { brukere && brukere.map(bruker => {
         return(
             <div className="col width-margin m6 card-panel nominerKort" key= {bruker.id} >
-                <p ref={ fornavnRef } > { bruker.Fornavn } </p>
-                <p ref={ etternavnRef } > { bruker.Etternavn } </p>
+                <p ref={ fornavnRef } ><strong> { bruker.Fornavn }</strong> </p>
+                <p ref={ etternavnRef } ><strong>{ bruker.Etternavn }</strong></p>
                 <p ref={ beskrivelseRef } >{ bruker.beskrivelse }</p>
                 <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } >Nominér</button> 
             </div>

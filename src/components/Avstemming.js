@@ -10,6 +10,7 @@ export default function Avstemming() {
     const { stemBruker, brukerHarStemt, gjeldeneBruker, votedOn } = useAuth()
     const fornavnRef = useRef()
     const etternavnRef = useRef()
+    const beskrivelseRef = useRef()
 
 
     useEffect(() => {
@@ -65,8 +66,9 @@ export default function Avstemming() {
         { brukere && brukere.map(bruker => {
         return(
             <div className="col width-margin m6 card-panel nominerKort" key= {bruker.id}>
-                <p ref={ fornavnRef } > { bruker.Fornavn } </p>
-                <p ref={ etternavnRef } > { bruker.Etternavn } </p>
+                <p ref={ fornavnRef } ><strong>{ bruker.Fornavn }</strong> </p>
+                <p ref={ etternavnRef } ><strong>{ bruker.Etternavn }</strong></p>
+                <p ref={ beskrivelseRef } > { bruker.beskrivelse } </p>
                 {  !harStemt && <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } >Stem</button>}
                 {   harStemt && <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } disabled >Stem</button>}
             </div>
