@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../context/authContext";
 import { Link, useHistory } from "react-router-dom"
+import { storage } from "../server/firebase";
 
 
 
@@ -21,6 +22,17 @@ export default function App() {
     const nomineringRef = useRef()
     const bildeRef = useRef()
     const history = useHistory()
+    const [picUrl, setPicUrl] = useState()
+
+    
+   
+
+    storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').getDownloadURL().then((url) => {
+        setPicUrl(url);
+        gjeldeneBruker.updateProfile({
+          photoURL: picUrl
+        })
+       })
     
     //Sjekker om Eposten har usn.no i seg
     var reg = /^\w+([-+.']\w+)*@(usn.no)/

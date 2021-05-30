@@ -1,23 +1,11 @@
 import React, { useState } from 'react'
 import { useAuth } from '../context/authContext'
-import { storage } from "../server/firebase";
+
 
 
 export function Home(){
     const { gjeldeneBruker  } = useAuth();
-    const [picUrl, setPicUrl] = useState()
 
-    
-   
-
-    storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').getDownloadURL().then((url) => {
-        setPicUrl(url);
-        gjeldeneBruker.updateProfile({
-          photoURL: picUrl
-        
-        
-        })
-       })
 
     
 

@@ -215,8 +215,6 @@ function sjekkEpost() {
     brukerHarStemt,
     sjekkEpost,
     votedOn
-    
-    
   }
 
   return (
