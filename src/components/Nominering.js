@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function Nominering(){
     const [brukere, setBruker] = useState("")
-    const { nominerBruker, setNominerbar, gjeldeneBruker } = useAuth()
+    const { nominerBruker, gjeldeneBruker } = useAuth()
     const fornavnRef = useRef()
     const etternavnRef = useRef()
     const beskrivelseRef = useRef()
@@ -24,9 +24,8 @@ export default function Nominering(){
 
     async function handleSubmit(id){
         const brukerFinner = brukere.find(bruker => bruker.id === id)
-        await nominerBruker(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.beskrivelse, brukerFinner.id )
-        await setNominerbar(brukerFinner.id)
-        //console.log(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id)
+        await nominerBruker(brukerFinner.id, brukerFinner.Fornavn, brukerFinner.Etternavn )
+        console.log(brukerFinner.Fornavn, brukerFinner.Etternavn, brukerFinner.id)
         window.location.reload()
     }
 

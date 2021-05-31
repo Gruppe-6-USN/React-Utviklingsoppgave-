@@ -14,12 +14,12 @@ export default function Avstemming() {
 
 
     useEffect(() => {
-        db.collection('NominerteBrukere')
+        db.collection('BrukerInfo')
+        .where("Nominert", "==", true)
         .get()
         .then(snapshot => {
           const documents = snapshot.docs.map(doc => doc.data())
           setBruker(documents);
-          //console.log(documents)
         })
     }, [])
 

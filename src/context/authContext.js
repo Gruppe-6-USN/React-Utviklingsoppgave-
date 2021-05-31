@@ -29,7 +29,7 @@ export function AuthProvider({ children }) {
   
 
 function stemBruker(id, valueChange) {
-  return db.collection("NominerteBrukere")
+  return db.collection("BrukerInfo")
   .doc(id)
   .update({
     antallStemmer: firebase.firestore.FieldValue.increment(valueChange)
@@ -54,15 +54,12 @@ function votedOn(id, stemtId) {
 }
 
  
-function nominerBruker(fornavn, etternavn, beskrivelse, id){
-  return db.collection("NominerteBrukere")
+async function nominerBruker(id, fornavn, etternavn){
+  await db.collection("BrukerInfo")
   .doc(id)
-  .set({
-    Fornavn: fornavn,
-    Etternavn: etternavn,
-    beskrivelse: beskrivelse,
-    id: id ,
-    antallStemmer: 0
+  .update({
+    Nominert: true,
+    Nominerbar: false
   })
   .then(() => {
     console.log(fornavn + " " + etternavn + " er nominert")
@@ -70,20 +67,6 @@ function nominerBruker(fornavn, etternavn, beskrivelse, id){
   .catch((error) => {
     console.error("Kunne ikke nominere")
   })
-}
-
-function setNominerbar(id){
-  return db.collection("BrukerInfo")
-  .doc(id)
-  .update({
-    Nominerbar: false
-  })
-    .then(()=> {
-      console.log("Nominerbar er satt til false")
-    })
-    .then((error) =>{
-      console.log("Kunne ikke endre nominerbar")
-    })
 }
 
 //Henter inn informasjon fra registering og legger det inn i firebase
@@ -96,7 +79,9 @@ function setNominerbar(id){
         beskrivelse: null,
         id: cred.user.uid,
         harStemt: false,
-        votedOn:""
+        votedOn:"",
+        antallStemmer: 0,
+        Nominert: false
       })
     })
     
@@ -211,7 +196,6 @@ function sjekkEpost() {
     oppdaterNom,
     oppdaterBeskrivelse,
     nominerBruker,
-    setNominerbar,
     stemBruker,
     brukerHarStemt,
     sjekkEpost,
