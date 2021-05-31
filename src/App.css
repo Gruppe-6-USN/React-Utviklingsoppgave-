@@ -21,11 +21,13 @@ a:hover {
 .btn {
   margin: 1vw;
   background-color: #311b92;
+  font-family: "Quicksand";
 }
 
 .loggutKnapp {
   margin: 1.5vh;
   background-color: #4a3997;
+  font-family: "Quicksand";
 }
 
 .btn:hover {
@@ -60,7 +62,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-left: 15px;
   margin-top: 25px;
   margin-bottom: 25px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Quicksandf";
   font-size: auto;
   font-weight: bold;
   color: floralwhite;
@@ -70,7 +72,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .liten-text {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Quicksand";
   color: #000000;
   font-size: auto;
   text-align: center;
