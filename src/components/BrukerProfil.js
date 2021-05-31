@@ -209,6 +209,14 @@ export default function App() {
                 {/*<img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar" className="circle"/>*/}
             </div>
             </div>
+            <div className="profile-info">
+              <div className="col width-margin m6 card-panel">
+                <h3>Profil</h3>
+                <p>Fornavn:</p>
+                <p>Etternavn:</p>
+                <p>Email: {gjeldeneBruker.email}</p>
+              </div>
+            </div>
         </div>
     );
 }
