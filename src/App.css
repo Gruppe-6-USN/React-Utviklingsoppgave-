@@ -1,5 +1,6 @@
 .App {
   text-decoration: none;
+  font-family: "Quicksand";
 }
 
 nav ul a,
@@ -49,8 +50,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   box-shadow: 0 1px 0 0 #321aa0a6;
 }
 
-
-.stor-text{
+.stor-text {
   color: white;
   background-color: #311b92;
   text-align: center;
@@ -60,7 +60,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-left: 15px;
   margin-top: 25px;
   margin-bottom: 25px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: auto;
   font-weight: bold;
   color: floralwhite;
@@ -70,7 +70,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .liten-text {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #000000;
   font-size: auto;
   text-align: center;
@@ -114,12 +114,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-top: 18px;
 }
 
-.width-margin  {
-  
+.width-margin {
   width: 400px !important;
-  
-  
-
 }
 @media only screen and (max-width: 600px) {
   .width-margin {
@@ -128,13 +124,11 @@ textarea.materialize-textarea:focus:not([readonly]) {
   }
   .stor-text {
     font-size: 140%;
-}
-.liten-text {
+  }
+  .liten-text {
     font-size: 120%;
+  }
 }
-}
-
-
 
 .nomList {
   list-style: none;
