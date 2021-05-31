@@ -8,6 +8,10 @@ nav .brand-logo {
   color: white;
 }
 
+input {
+  font-family: "Quicksand";
+}
+
 .sidenav-trigger {
   color: white;
 }
@@ -62,7 +66,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-left: 15px;
   margin-top: 25px;
   margin-bottom: 25px;
-  font-family: "Quicksandf";
+  font-family: "Quicksand";
   font-size: auto;
   font-weight: bold;
   color: floralwhite;
@@ -94,6 +98,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .row {
   margin: auto !important;
+}
+
+.profile-info {
+  width: 30%;
+  position: absolute;
+  top: 68px;
+  text-align: justify;
 }
 
 #blah {
