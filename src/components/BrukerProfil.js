@@ -12,7 +12,7 @@ export default function App() {
     const [checked, setChecked] = useState(false);
     //Får å disable ulike ting mens siden loader
     const [loading, setLoading] = useState(false);
-    const { gjeldeneBruker, oppdaterMail, oppdaterPassord, oppdaterFNavn, oppdaterENavn, oppdaterNom, oppdaterBeskrivelse, nominerbarDisplay } = useAuth();
+    const { gjeldeneBruker, oppdaterMail, oppdaterPassord, oppdaterFNavn, oppdaterENavn, oppdaterNom, oppdaterBeskrivelse, nominerbarDisplay, fornavnDisplay, etternavnDisplay } = useAuth();
     const fornavnRef = useRef()
     const etternavnRef = useRef()
     const emailRef = useRef()
@@ -212,8 +212,8 @@ export default function App() {
             <div className="profile-info">
               <div className="col width-margin m6 card-panel">
                 <h3>Profil</h3>
-                <p>Fornavn:</p>
-                <p>Etternavn:</p>
+                <p>Fornavn: {fornavnDisplay}</p>
+                <p>Etternavn: {etternavnDisplay}</p>
                 <p>Email: {gjeldeneBruker.email}</p>
               </div>
             </div>
