@@ -27,25 +27,26 @@ const Navbar = () => {
             setError("Utlogging mislykkes")
         }
     } if(!gjeldeneBruker){
-        return (<div className="App">
-      <nav className="deep-purple darken-4">  
-      <div className="nav-wrapper container nav">
+        return (
+      <div className="App">
+        <nav className="deep-purple darken-4">  
+          <div className="nav-wrapper container nav">
         
-      <a id="logo-container" href="/" className="brand-logo">USN-valget</a>
-      <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-          <div className="">
-              <ul className="right hide-on-med-and-down">
-        {<li><NavLink to="/Logginn">Logg inn</NavLink></li>}
-        {<li><NavLink to="/Registrering">Registrering</NavLink></li>}
-        {error && <p>{error}</p>}
-        </ul>
-        <ul id="nav-mobile" className="sidenav">
-        {<li><NavLink to="/Logginn">Logg inn</NavLink></li>}
-        {<li><NavLink to="/Registrering">Registrering</NavLink></li>}
-        
-        </ul>
-        </div>
-        </div>
+            <a id="logo-container" href="/" className="brand-logo">USN-valget</a>
+            <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+              <div className="">
+                <ul className="right hide-on-med-and-down">
+                {<li><NavLink to="/Logginn">Logg inn</NavLink></li>}
+                {<li><NavLink to="/Registrering">Registrering</NavLink></li>}
+                {error && <p>{error}</p>}
+              </ul>
+              <ul id="nav-mobile" className="sidenav">
+                {<li><NavLink to="/Logginn">Logg inn</NavLink></li>}
+                {<li><NavLink to="/Registrering">Registrering</NavLink></li>}
+          
+              </ul>
+      </div>
+      </div>
         </nav>
         </div> 
         
