@@ -2,7 +2,7 @@ import { NavLink, withRouter, useHistory } from 'react-router-dom';
 import React, {useEffect, useState } from 'react'
 import { useAuth } from '../context/authContext'
 import M from 'materialize-css';
-import Logo from '../USN_logo_rgb_neg.png'
+import Logo from '../USN_logo_rgb_1.png'
 
 
 const Navbar = () => {
@@ -27,7 +27,7 @@ const Navbar = () => {
     } if(!gjeldeneBruker){
         return (
       <div className="App">
-        <nav className="deep-purple darken-4">  
+        <nav className="white">  
           <div className="nav-wrapper container nav">
         
             <a id="logo-container" href="/" className="brand-logo">USN-valget</a>
@@ -54,10 +54,10 @@ const Navbar = () => {
     return ( 
       
     <div className="App">
-      <nav className="deep-purple darken-4">  
+      <nav className="white">  
       <div className="nav-wrapper container nav">
         
-      <a id="logo-container" href="/" className="brand-logo">USN-valget</a>
+      <a id="logo-container" href="/" className="brand-logo"><img src={Logo} alt="logo" width="218.6" height="49.3" /></a>
       <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <div className="">
               <ul className="right hide-on-med-and-down">

@@ -1,6 +1,7 @@
 nav ul a,
 nav .brand-logo {
-  color: white;
+  margin: 3px;
+  
 }
 
 .sidenav {
@@ -9,11 +10,11 @@ nav .brand-logo {
 }
 
 .sidenav a:hover {
-  color: #311b92;
+  color: #4646a5;
 }
 
 .sidenav-trigger {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 a:hover {
@@ -24,18 +25,18 @@ a:hover {
 
 .btn {
   margin: 1vw;
-  background-color: #311b92;
+  background-color: #4646a5;
 
 }
 
 .loggutKnapp {
   margin: 1.5vh;
-  background-color: #4a3997;
+  background-color: #4646a5;
  
 }
 
 .btn:hover {
-  background-color: #2e06e0;
+  background-color: #a1a1a1;
 }
 
 input:not([type]):focus:not([readonly]),
@@ -58,7 +59,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .stor-text {
   color: white;
-  background-color: #311b92;
+  background-color: #4646a5;
   text-align: center;
   height: auto;
   width: auto;
@@ -139,10 +140,18 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .nomList :hover {
-  color: #311b92;
+  color: #4646a5;
 }
 
 .myProfile {
   margin-top: 20px;
   margin-left: 12px;
+}
+
+.white{
+  border-bottom:1px solid #4646a5 !important; 
+}
+
+.card-panel{
+  background-color: #f5f5f5;
 }
