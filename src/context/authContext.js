@@ -73,6 +73,7 @@ async function nominerBruker(id, fornavn, etternavn){
   function registrer(email, password, fornavn, etternavn, nominerbar) {
     auth.createUserWithEmailAndPassword(email, password).then( cred => {
       return db.collection('BrukerInfo').doc(cred.user.uid).set({
+        Email: email, 
         Fornavn: fornavn,
         Etternavn: etternavn,
         Nominerbar: nominerbar,
@@ -138,13 +139,16 @@ function oppdaterBeskrivelse(beskrivelse) {
 function sjekkEpost() {
   setTimeout(() => {
     var user = firebase.auth().currentUser;
+    if(user === null)
+    {
+      return setError("Epost er allerede i bruk")
+    }
     user.sendEmailVerification().then(function() {
       return setError("Aktiverings epost er sendt til din epost")// Email sent.
     }).catch(function() {
       // An error happened.
       return setError("Dette er ikke en aktiv usn epost")
     });      
-    
     
   }, 2000);
 }
