@@ -100,14 +100,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin: auto !important;
 }
 
-.profile-info {
-  width: 30%;
-  position: absolute;
-  top: 68px;
-  margin-left: 10px;
-  text-align: justify;
-}
-
 #blah {
   width: 50%;
   object-fit: cover;
@@ -150,4 +142,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .nomList :hover {
   color: #311b92;
+}
+
+.myProfile {
+  margin-top: 20px;
+  margin-left: 12px;
 }
