@@ -118,7 +118,15 @@ export default function App() {
     return (
     <div className="App">
         <div className="row">
-            <div className="col s12 offset-m4 m4 card-panel">
+        
+              <div className="col l2 width-margin m5 card-panel">
+                <h3>Profil</h3>
+                <p>Fornavn: {fornavnDisplay}</p>
+                <p>Etternavn: {etternavnDisplay}</p>
+                <p>Email: {gjeldeneBruker.email}</p>
+              </div>
+            
+            <div className="col s12 offset-m1 m4 card-panel">
             {/*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />*/}
 
                 <h3>Oppdater profil</h3>
@@ -208,14 +216,6 @@ export default function App() {
                 </form>
                 {/*<img src={gjeldeneBruker.photoURL} width="100" height="100" alt="avatar" className="circle"/>*/}
             </div>
-            </div>
-            <div className="profile-info">
-              <div className="col width-margin m6 card-panel">
-                <h3>Profil</h3>
-                <p>Fornavn: {fornavnDisplay}</p>
-                <p>Etternavn: {etternavnDisplay}</p>
-                <p>Email: {gjeldeneBruker.email}</p>
-              </div>
             </div>
         </div>
     );
