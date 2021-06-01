@@ -67,7 +67,7 @@ export default function Avstemming() {
         return(
             <div className="col width-margin m6 card-panel nominerKort" key= {bruker.id}>
                 <p ref={ fornavnRef } ><strong>{ bruker.Fornavn }</strong> </p>
-                <p ref={ etternavnRef } ><strong>{ bruker.Etternavn }</strong></p>
+                <p ref={ etternavnRef } ><strong>{ bruker.Etternavn }</strong>:</p>
                 <p ref={ beskrivelseRef } > { bruker.beskrivelse } </p>
                 {  !harStemt && <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } >Stem</button>}
                 {   harStemt && <button className="float-right btn waves-effect waves-light" onClick= { () => handleSubmit(bruker.id) } disabled >Stem</button>}
