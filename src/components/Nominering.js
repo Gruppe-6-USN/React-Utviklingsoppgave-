@@ -32,7 +32,7 @@ export default function Nominering(){
     return ( 
     <div className="App">
         <div className="row width-margin">
-        <h3>Nominér en kandidat</h3>
+        <h3 className="tittel-tekst">Nominér en kandidat</h3>
         <p> Her vises brukere som kan nomineres videre for avsteming.
             <br/>
             Trykk på "nominér" for å nominere en kandidat. Kandidaten vil da bli registrert for avstemming.

@@ -73,6 +73,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   padding-top: 15px;
   padding-bottom: 15px;
   box-shadow: 10px 10px grey;
+  font-family: 'Source Serif Pro', serif !important;
 }
 
 .liten-text {
@@ -81,6 +82,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
   text-align: center;
   margin-right: 10px;
   margin-left: 10px;
+}
+
+.tittel-tekst {
+  font-family: 'Source Serif Pro', serif;
 }
 
 .backgroundposter {
