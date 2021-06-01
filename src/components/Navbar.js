@@ -30,7 +30,7 @@ const Navbar = () => {
         <nav className="white">  
           <div className="nav-wrapper container nav">
         
-            <a id="logo-container" href="/" className="brand-logo">USN-valget</a>
+          <a id="logo-container" href="/" className="brand-logo"><img src={Logo} alt="logo" width="218.6" height="49.3" /></a>
             <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
               <div className="">
                 <ul className="right hide-on-med-and-down">
