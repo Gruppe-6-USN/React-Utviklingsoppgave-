@@ -1,6 +1,6 @@
 .App {
   text-decoration: none;
-  font-family: "Quicksand";
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 nav ul a,
@@ -9,7 +9,7 @@ nav .brand-logo {
 }
 
 input {
-  font-family: "Quicksand";
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .sidenav-trigger {
@@ -25,13 +25,13 @@ a:hover {
 .btn {
   margin: 1vw;
   background-color: #311b92;
-  font-family: "Quicksand";
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .loggutKnapp {
   margin: 1.5vh;
   background-color: #4a3997;
-  font-family: "Quicksand";
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .btn:hover {
@@ -66,8 +66,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-left: 15px;
   margin-top: 25px;
   margin-bottom: 25px;
-  font-family: "Quicksand";
-  font-size: auto;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
   font-weight: bold;
   color: floralwhite;
   padding-top: 15px;
@@ -76,9 +76,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .liten-text {
-  font-family: "Quicksand";
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 16px;
   color: #000000;
-  font-size: auto;
   text-align: center;
   margin-right: 10px;
   margin-left: 10px;
@@ -104,6 +104,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   width: 30%;
   position: absolute;
   top: 68px;
+  margin-left: 5px;
   text-align: justify;
 }
 
