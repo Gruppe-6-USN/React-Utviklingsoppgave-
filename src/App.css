@@ -1,16 +1,13 @@
-.App {
-  text-decoration: none;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
+
+
+
 
 nav ul a,
 nav .brand-logo {
   color: white;
 }
 
-input {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
+
 
 .sidenav {
   background-color: #f6f6f8;
