@@ -5,7 +5,6 @@ import M from 'materialize-css';
 import Logo from '../USN_logo_rgb_neg.png'
 
 
-
 const Navbar = () => {
     const [error, setError] = useState("");
     const { gjeldeneBruker, loggut } = useAuth();
@@ -14,7 +13,6 @@ const Navbar = () => {
     useEffect(() => { 
       M.Sidenav.init(document.querySelectorAll('.sidenav'), {});
 }, [])
-
     async function handleImageError (e) { <img src={'defaultimage/default.png'} width="100" height="100" alt="avatar" /> }
 
     async function handleLoggut() {
@@ -41,9 +39,9 @@ const Navbar = () => {
                 {error && <p>{error}</p>}
               </ul>
               <ul id="nav-mobile" className="sidenav">
+              {<li><a className="sidenav-close material-icons right" href="#!">close</a></li>}
                 {<li><NavLink to="/Logginn">Logg inn</NavLink></li>}
                 {<li><NavLink to="/Registrering">Registrering</NavLink></li>}
-          
               </ul>
       </div>
       </div>
@@ -51,10 +49,10 @@ const Navbar = () => {
         </div> 
         
         )
-        
 
     } else {
     return ( 
+      
     <div className="App">
       <nav className="deep-purple darken-4">  
       <div className="nav-wrapper container nav">
@@ -75,6 +73,7 @@ const Navbar = () => {
               </ul>
               
               <ul id="nav-mobile" className="sidenav">
+                {<li><a className="sidenav-close material-icons right" href="#!">close</a></li>}
                 {gjeldeneBruker && <li><NavLink to="/">Hjem</NavLink></li>}
                   {gjeldeneBruker && <li><NavLink to="/Avstemming">Avstemming</NavLink></li>}
                   {gjeldeneBruker && <li><NavLink to="/Nominering">Nominering</NavLink></li>}
