@@ -1,17 +1,11 @@
-
-
-
-
 nav ul a,
 nav .brand-logo {
   color: white;
 }
 
-
-
 .sidenav {
   background-color: #f6f6f8;
-  height: 30%;
+  height: 40%;
 }
 
 .sidenav a:hover {
