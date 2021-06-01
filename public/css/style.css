@@ -6,6 +6,12 @@
  * Made By MaterializeCSS.com
  */
 
+ @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+html{
+  font-family: 'Open Sans', sans-serif;
+}
+
 nav ul a,
 nav .brand-logo {
   color: #444;
