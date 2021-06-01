@@ -67,7 +67,7 @@ const Navbar = () => {
                   {gjeldeneBruker.emailVerified === true && <li><NavLink to="/Avstemming">Avstemming</NavLink></li>}
                   {gjeldeneBruker.emailVerified === true && <li><NavLink to="/Nominering">Nominering</NavLink></li>}
                   {gjeldeneBruker.emailVerified === true && <li><NavLink to="/BrukerProfil">Profil</NavLink></li>}
-                  { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } onError={handleImageError} width="100" height="100" alt="avatar" className="circle z-depth-2"/> }
+                  { gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } onError={handleImageError} width="60" height="60" alt="avatar" className="circle z-depth-2"/> }
                   {gjeldeneBruker.emailVerified === true && <button onClick={handleLoggut} className="loggutKnapp btn waves-effect waves-light right">Logg ut</button>}
                   {error && <p>{error}</p>}
               </ul>
