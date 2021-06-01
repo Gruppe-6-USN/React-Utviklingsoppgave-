@@ -83,10 +83,20 @@ async function nominerBruker(id, fornavn, etternavn){
         votedOn:"",
         antallStemmer: 0,
         Nominert: false
-      })
-    })
-    
+      })  
+    }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if(errorCode == "auth/email-already-in-use"){
+        setError(errorMessage)
+    } else {
+      setError(errorMessage);
+    }
+    console.log(error);
+  });
+  setError("")
   }
+
 
   function logginn(email, password) {
     return auth.signInWithEmailAndPassword(email, password)
@@ -138,21 +148,20 @@ function oppdaterBeskrivelse(beskrivelse) {
 
 function sjekkEpost() {
   setTimeout(() => {
-    var user = firebase.auth().currentUser;
-    if(user === null)
-    {
-      return setError("Epost er allerede i bruk")
+    if(registrer() === false){
+      setError("Feil")
     }
+    var user = firebase.auth().currentUser;
     user.sendEmailVerification().then(function() {
-      return setError("Aktiverings epost er sendt til din epost")// Email sent.
-    }).catch(function() {
-      // An error happened.
-      return setError("Dette er ikke en aktiv usn epost")
+      setError("Aktiverings epost er sendt til din epost")// Email sent.
+    }).catch(function(err) {
+  
+      
     });      
-    
+    console.log(user.sendEmailVerification());
+
   }, 2000);
 }
-
 
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
