@@ -141,6 +141,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-left: 20px;
 }
 
+.homePanel {
+  margin-top: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   .width-margin {
     width: 300px !important;
@@ -183,4 +187,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .card-panel {
   background-color: #f5f5f5;
+}
+
+.homePanel {
+  margin-top: 30px;
 }
