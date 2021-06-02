@@ -159,7 +159,7 @@ function sjekkEpost() {
     });      
     console.log(user.sendEmailVerification());
 
-  }, 750);
+  }, 1000);
  
   
 }
