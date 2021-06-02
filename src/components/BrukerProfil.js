@@ -135,7 +135,6 @@ export default function App() {
         <div className="row">
         
               <div className="col l2 push-s1 width-margin m5 card-panel myProfile">
-                <h3 className="tittel-tekst">Profil</h3>
                 {gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } width="100" height="100" alt="avatar" className="circle z-depth-2"/> }
                 <p>Fornavn: {fornavnDisplay}</p>
                 <p>Etternavn: {etternavnDisplay}</p>
