@@ -134,7 +134,7 @@ export default function App() {
     <div className="App">
         <div className="row">
         
-              <div className="col l2 push-s1 width-margin m5 card-panel myProfile">
+              <div className="col card-panel myProfile">
                 {gjeldeneBruker.photoURL && <img src={ gjeldeneBruker.photoURL } width="100" height="100" alt="avatar" className="circle z-depth-2 profiBilde"/> }
                 <h5>Hei {fornavnDisplay} ha en strålende dag!</h5>
                 <p className="profilStorTekst">{fornavnDisplay}  {etternavnDisplay}</p>
