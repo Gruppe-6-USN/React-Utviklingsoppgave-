@@ -85,6 +85,11 @@ textarea.materialize-textarea:focus:not([readonly]) {
   font-family: "Source Serif Pro", serif;
 }
 
+.profilStorTekst {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .backgroundposter {
   background: antiquewhite;
   padding-top: 144px;
