@@ -84,20 +84,7 @@ async function nominerBruker(id, fornavn, etternavn){
         antallStemmer: 0,
         Nominert: false
       })  
-    }).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      if(errorCode == "auth/email-already-in-use"){
-        
-        setError("En konto med denne emailen er allerede i bruk") 
-        refreshSide();
-        
-        
-    } else {
-      setError(errorMessage);
-    }
-    console.log(error);
-  });
+    })
   setError("")
   console.log(registrer)
   }
@@ -153,20 +140,15 @@ function oppdaterBeskrivelse(beskrivelse) {
 
 function sjekkEpost() {
   
+  
   setTimeout(() => {
-    try {
+   
     var user = firebase.auth().currentUser;
     user.sendEmailVerification().then(function() {
       setError("Aktiverings epost er sendt til din epost")// Email sent.
       refreshSide();
-    }).catch(function(error) {
-  
-      
-    });      
-  }catch(error){
-    setError("En konto med denne emailen er allerede i bruk")
-   refreshSide();
-  }
+    })      
+
 
   }, 1000);
   
