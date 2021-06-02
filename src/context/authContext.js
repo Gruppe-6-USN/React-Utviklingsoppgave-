@@ -88,15 +88,18 @@ async function nominerBruker(id, fornavn, etternavn){
       var errorCode = error.code;
       var errorMessage = error.message;
       if(errorCode == "auth/email-already-in-use"){
+        
         setError("En konto med denne emailen er allerede i bruk") 
         refreshSide();
-
+        
+        
     } else {
       setError(errorMessage);
     }
     console.log(error);
   });
   setError("")
+  console.log(registrer)
   }
 
 
@@ -162,7 +165,7 @@ function sjekkEpost() {
     });      
   }catch(error){
     setError("En konto med denne emailen er allerede i bruk")
-    refreshSide();
+   refreshSide();
   }
 
   }, 1000);
@@ -173,7 +176,7 @@ function sjekkEpost() {
 function refreshSide() {
   setTimeout(() => {
   window.location.reload(false);
-  }, 3000);
+  }, 2000);
 }
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
