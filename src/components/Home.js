@@ -4,7 +4,7 @@ export function Home(){
     return ( 
     <div className="App">
         <div className="row">
-            <div className="col s12 offset-m4 m4 card-panel">
+            <div className="col s12 offset-m4 m4 card-panel homePanel">
                 <div class = "background">
                     <div class ="stor-text">Velkommen til USN valget</div>
                     <div class ="liten-text">GRUPPE 6 PRESENTERER</div>
