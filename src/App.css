@@ -132,7 +132,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-top: 6px;
 }
 .sideNavBilde {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: 20px;
 }
 
@@ -160,6 +160,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .myProfile {
   margin-top: 20px;
   margin-left: 12px;
+  text-align: center;
 }
 
 .white {
