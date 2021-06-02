@@ -52,6 +52,7 @@ export function Registrering() {
       setError("")
       setLoading(true)
       registrer(emailRef.current.value, passordRef.current.value, fornavnRef.current.value, etternavnRef.current.value, checked)
+      sjekkEpost()
       setTimeout(() => {
         history.push("/Logginn")
       }, 3000);
@@ -63,7 +64,7 @@ export function Registrering() {
     
       // Setter en timeout slik at eposten blir lagt i databasen før den forsøker å sende epost
       //Sjekker om eposten finnes og sender en aktiverings epost.
-    sjekkEpost()
+    
   }
       
   

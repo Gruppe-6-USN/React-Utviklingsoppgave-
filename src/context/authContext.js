@@ -88,7 +88,8 @@ async function nominerBruker(id, fornavn, etternavn){
       var errorCode = error.code;
       var errorMessage = error.message;
       if(errorCode == "auth/email-already-in-use"){
-        setError(errorMessage)
+        setError("En konto med denne emailen er allerede i bruk")
+        refreshSide();
     } else {
       setError(errorMessage);
     }
@@ -148,21 +149,26 @@ function oppdaterBeskrivelse(beskrivelse) {
 
 function sjekkEpost() {
   setTimeout(() => {
-    if(registrer() === false){
-      setError("Feil")
-    }
     var user = firebase.auth().currentUser;
     user.sendEmailVerification().then(function() {
       setError("Aktiverings epost er sendt til din epost")// Email sent.
-    }).catch(function(err) {
+      refreshSide();
+    }).catch(function(error) {
   
       
     });      
     console.log(user.sendEmailVerification());
 
-  }, 2000);
+  }, 750);
+ 
+  
 }
 
+function refreshSide() {
+  setTimeout(() => {
+  window.location.reload(false);
+  }, 3000);
+}
   
   //useEffect: Når noe skjer vil vi at en bivirkning skal skje
   //setTimeout setter en delay før den skal displaye fornavn og etternavn
@@ -181,7 +187,7 @@ function sjekkEpost() {
           setNominerbarDisplay(nominert)
           /*console.log(firstName, lastName)*/
        });
-      }, 500);
+      }, 750);
       }
       setLoading(false)
       return unsubscribe
