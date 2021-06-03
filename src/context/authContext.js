@@ -109,10 +109,10 @@ async function nominerBruker(id, fornavn, etternavn){
  }
 
  async function setProfileUrl() {
+   console.log(gjeldeneBruker.uid)
   await storage.ref('brukere/' + gjeldeneBruker.uid + '/profile.jpg').getDownloadURL().then((url) => {
-    setPicUrl(url);
     gjeldeneBruker.updateProfile({
-      photoURL: picUrl
+      photoURL: url
     })
    })
  }
