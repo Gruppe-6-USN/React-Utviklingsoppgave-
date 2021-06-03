@@ -179,6 +179,7 @@ export default function App() {
                               type="email" 
                               defaultValue={gjeldeneBruker.email}
                               ref={emailRef} 
+                              disabled={true}
                               className="validate"
                               required
                             />
