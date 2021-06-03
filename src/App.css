@@ -188,7 +188,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-top: 30px;
 }
 
-
+.nav {
+  width: 80%;
+}
 
 @media only screen and (max-width: 600px) {
   .width-margin {
@@ -204,13 +206,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 @media only screen and (min-width: 900px) {
-  .brand-logo{
+  /*.brand-logo{
     padding-right: 100px !important;
     margin: 0;
-  }
+  }*/
 
   .nav {
-    width: 100%;
+    width: 80%;
   }
 }
 
