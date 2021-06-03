@@ -153,19 +153,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-top: 50px;
 }
 
-@media only screen and (max-width: 600px) {
-  .width-margin {
-    width: 300px !important;
-    margin: 0 10px 10px 0;
-  }
-  .stor-text {
-    font-size: 140%;
-  }
-  .liten-text {
-    font-size: 120%;
-  }
-}
-
 .nomList {
   list-style: none;
 }
@@ -200,3 +187,18 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .homePanel {
   margin-top: 30px;
 }
+
+@media only screen and (max-width: 600px) {
+  .width-margin {
+    width: 300px !important;
+    margin: 0 10px 10px 0;
+  }
+  .stor-text {
+    font-size: 140%;
+  }
+  .liten-text {
+    font-size: 120%;
+  }
+}
+
+
