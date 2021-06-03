@@ -188,6 +188,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-top: 30px;
 }
 
+
+
 @media only screen and (max-width: 600px) {
   .width-margin {
     width: 300px !important;
@@ -198,6 +200,17 @@ textarea.materialize-textarea:focus:not([readonly]) {
   }
   .liten-text {
     font-size: 120%;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .brand-logo{
+    padding-right: 100px !important;
+    margin: 0;
+  }
+
+  .nav {
+    width: 100%;
   }
 }
 
